@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Mousewheel, Keyboard } from "swiper/modules";
+import { Autoplay, EffectCards, Mousewheel, Keyboard } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-fade";
+import "swiper/css/effect-cards";
 
 export default function Gallery() {
   return (
@@ -27,78 +27,57 @@ export default function Gallery() {
           <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto"></div>
         </motion.div>
 
-        <div className="w-full max-w-[450px] relative">
+        <div className="w-full max-w-[300px] md:max-w-[420px] relative">
           <Swiper
-            modules={[EffectFade, Mousewheel, Keyboard]}
-            effect={"fade"}
+            modules={[Autoplay, EffectCards, Mousewheel, Keyboard]}
+            effect={"cards"}
             grabCursor={true}
             centeredSlides={true}
             slidesPerView={1}
             loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
             mousewheel={{
               forceToAxis: true,
             }}
             keyboard={{
                 enabled: true,
             }}
+            cardsEffect={{
+              slideShadows: true,
+              rotate: true,
+              perSlideOffset: 12,
+              perSlideRotate: 2,
+            }}
             className="w-full"
           >
             {weddingConfig.gallery.map((story, index) => (
               <SwiperSlide key={index} className="flex flex-col items-center">
-                <motion.div 
-                    className="bg-white p-4 pb-12 shadow-2xl rounded-sm border border-gray-100 transform rotate-1 hover:rotate-0 transition-transform duration-500"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                >
-                  <div className="relative aspect-[3/4] w-full overflow-hidden mb-6 shadow-inner bg-gray-50">
+                <div className="bg-white p-3 pb-10 md:p-4 md:pb-14 shadow-2xl rounded-sm border border-gray-100 w-full mb-8">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden mb-4 md:mb-6 shadow-inner bg-gray-50">
                     <Image
                       src={story.src}
                       alt={story.caption}
                       fill
                       className="object-cover"
                       priority={index === 0}
-                      sizes="(max-width: 768px) 100vw, 450px"
+                      sizes="(max-width: 768px) 100vw, 420px"
                     />
                   </div>
-                  <div className="text-center">
-                    <p className="font-great-vibes text-2xl text-gray-800 italic">
+                  <div className="text-center px-2">
+                    <p className="font-great-vibes text-2xl md:text-3xl text-gray-800">
                       {story.caption}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          
-          {/* Subtle instructions for first-time interaction */}
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            className="text-center mt-8 font-cormorant text-sm uppercase tracking-widest text-gray-500"
-          >
-            Swipe or use mouse wheel to turn pages
-          </motion.p>
         </div>
       </div>
-
-      <style jsx global>{`
-        /* Hide all swiper navigation artifacts */
-        .swiper-button-next, 
-        .swiper-button-prev, 
-        .swiper-pagination {
-          display: none !important;
-        }
-        
-        .swiper-fade .swiper-slide {
-            pointer-events: none;
-            transition-property: opacity;
-        }
-        
-        .swiper-fade .swiper-slide-active {
-            pointer-events: auto;
-        }
-      `}</style>
     </section>
   );
 }

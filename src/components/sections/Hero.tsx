@@ -6,26 +6,26 @@ import { HiChevronDown } from "react-icons/hi";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden px-4">
       <motion.div
-        className="z-10 text-center space-y-6 px-4 max-w-4xl"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+        className="z-10 text-center space-y-8 md:space-y-12 max-w-4xl -mt-16 md:mt-0"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
       >
-        <p className="text-sm md:text-lg font-cormorant tracking-[0.3em] uppercase text-[var(--color-gold-500)]">
+        <p className="text-xs md:text-sm font-cormorant tracking-[0.4em] uppercase text-[var(--color-gold-500)] mb-8 md:mb-12">
           You are invited
         </p>
 
-        <h1 className="text-7xl md:text-9xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] drop-shadow-sm">
+        <h1 className="text-6xl md:text-9xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] drop-shadow-sm leading-tight">
           {weddingConfig.couple.displayName1}
-          <span className="block text-5xl md:text-7xl text-[var(--color-rosegold)] my-2">&</span>
+          <span className="block text-4xl md:text-7xl text-[var(--color-rosegold)] my-4 md:my-6">&</span>
           {weddingConfig.couple.displayName2}
         </h1>
 
-        <div className="w-24 h-[1px] bg-[var(--color-gold-400)] mx-auto my-8"></div>
+        <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto my-8 md:my-12 opacity-50"></div>
 
-        <p className="text-xl md:text-3xl font-playfair italic text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] leading-relaxed">
+        <p className="text-xl md:text-3xl font-playfair italic text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] leading-relaxed px-2">
           Request the honor of your presence <br className="hidden md:block" /> at our wedding celebration.
         </p>
       </motion.div>

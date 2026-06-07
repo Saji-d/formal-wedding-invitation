@@ -74,19 +74,19 @@ export default function RSVP() {
   };
 
   return (
-    <section className="py-24 px-4 bg-[var(--background)]">
+    <section className="py-16 md:py-24 px-4 bg-[var(--background)]">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mb-12"
+          className="mb-8 md:mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4 uppercase tracking-wider">
             Will You Join Our Celebration?
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-6"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-4 md:mb-6"></div>
           <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400">
             Please let us know if you can make it
           </p>
@@ -99,7 +99,7 @@ export default function RSVP() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass p-8 md:p-12 rounded-3xl space-y-8 text-left border border-[var(--color-gold-400)]/20 shadow-xl"
+            className="glass p-6 md:p-12 rounded-3xl space-y-6 md:space-y-8 text-left border border-[var(--color-gold-400)]/20 shadow-xl"
           >
             <div>
               <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">

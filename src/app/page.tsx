@@ -48,10 +48,10 @@ export default function Home() {
           {/* Back to top button */}
           <button
             onClick={scrollToTop}
-            className="fixed bottom-24 right-6 z-50 p-4 rounded-full glass bg-[var(--color-burgundy-900)] text-[var(--color-champagne)] shadow-lg hover:bg-[var(--color-burgundy-800)] transition-all duration-300 border border-white/10"
+            className="fixed bottom-20 right-6 z-50 p-3 rounded-full glass bg-[var(--color-burgundy-900)] text-[var(--color-champagne)] shadow-lg hover:bg-[var(--color-burgundy-800)] opacity-20 hover:opacity-80 transition-all duration-300 border border-white/10"
             aria-label="Scroll to top"
           >
-            <HiArrowUp className="w-5 h-5" />
+            <HiArrowUp className="w-4 h-4" />
           </button>
         </div>
       )}
