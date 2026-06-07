@@ -17,7 +17,8 @@ export default function OpeningScreen({ onComplete }: OpeningScreenProps) {
       (window as any).startWeddingMusic();
     }
     setIsOpen(true);
-    setTimeout(onComplete, 4000); // Allow time for exit animation and reveal
+    // Almost instant transition (300ms)
+    setTimeout(onComplete, 300);
   };
 
   return (
@@ -26,8 +27,8 @@ export default function OpeningScreen({ onComplete }: OpeningScreenProps) {
         <motion.div
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--background)] text-[var(--foreground)]"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--color-gold-400)] opacity-10 blur-[100px] rounded-full mix-blend-screen" />
@@ -38,7 +39,7 @@ export default function OpeningScreen({ onComplete }: OpeningScreenProps) {
             className="z-10 text-center space-y-8 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
             <h2 className="text-2xl md:text-3xl font-playfair tracking-widest text-[var(--color-gold-500)]">
               بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
@@ -54,10 +55,6 @@ export default function OpeningScreen({ onComplete }: OpeningScreenProps) {
 
             <p className="text-xl md:text-2xl font-cormorant tracking-widest uppercase">
               {weddingConfig.couple.togetherForever}
-            </p>
-
-            <p className="text-lg md:text-xl font-cormorant">
-              {weddingConfig.events.mehendi.displayDate.split(" ")[0]}–{weddingConfig.events.wedding.displayDate}
             </p>
 
             <motion.button

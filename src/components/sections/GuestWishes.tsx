@@ -17,17 +17,39 @@ export default function GuestWishes() {
 
     setIsLoading(true);
 
-    const formData = new FormData();
-    formData.append(weddingConfig.googleForms.blessings.entries.name, name.trim());
-    formData.append(weddingConfig.googleForms.blessings.entries.message, message.trim());
+    const url = weddingConfig.googleForms.blessings.url;
+    const payload = {
+      [weddingConfig.googleForms.blessings.entries.name]: name.trim(),
+      [weddingConfig.googleForms.blessings.entries.message]: message.trim(),
+    };
+
+    // CRITICAL DIAGNOSTIC LOGS
+    console.log("--- GOOGLE FORM BLESSINGS SUBMISSION ---");
+    console.log("Google form URL:", url);
+    console.log("Submitting form payload:", payload);
+
+    const formData = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+
+    // Add required hidden fields for Google Forms
+    formData.append("fvv", "1");
+    formData.append("pageHistory", "0");
 
     try {
       // Silent submission to Google Forms
-      await fetch(weddingConfig.googleForms.blessings.url, {
+      const response = await fetch(url, {
         method: "POST",
         mode: "no-cors",
-        body: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
       });
+
+      console.log("Response status:", response.status);
+      console.log("Response result:", response);
 
       setName("");
       setMessage("");

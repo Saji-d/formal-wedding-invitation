@@ -13,58 +13,85 @@ export default function BackgroundEffects() {
       const container = containerRef.current;
       if (!container) return;
 
-      // Create petals
-      for (let i = 0; i < 30; i++) {
+      const petalCount = 45;
+      
+      // We want petals to fall through the entire document
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+
+      for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement("div");
         petal.className = "petal";
         
-        // Randomize initial properties
+        // Distribute petals initially across the visible area and beyond
         gsap.set(petal, {
           x: Math.random() * window.innerWidth,
-          y: -50 - Math.random() * 100,
+          y: Math.random() * window.innerHeight - 200, 
           rotation: Math.random() * 360,
-          scale: 0.5 + Math.random() * 0.8,
-          opacity: 0.4 + Math.random() * 0.4,
+          scale: 0.5 + Math.random() * 0.7,
+          opacity: 0.2 + Math.random() * 0.4,
         });
 
         container.appendChild(petal);
 
-        // Animate
-        gsap.to(petal, {
-          y: window.innerHeight + 100,
-          x: `+=${-50 + Math.random() * 100}`,
-          rotation: `+=${180 + Math.random() * 180}`,
-          duration: 10 + Math.random() * 15,
-          repeat: -1,
-          ease: "none",
-          delay: Math.random() * -15, // start randomly in progress
-        });
+        const animatePetal = (p: HTMLElement) => {
+            // Random duration for each fall to prevent synchronization
+            const duration = 15 + Math.random() * 20;
+            
+            gsap.to(p, {
+                y: `+=${window.innerHeight + 500}`, 
+                x: `+=${-100 + Math.random() * 200}`,
+                rotation: `+=${360 + Math.random() * 360}`,
+                duration: duration,
+                ease: "none",
+                onComplete: () => {
+                    // Reset to just above viewport
+                    gsap.set(p, { 
+                        y: -100, 
+                        x: Math.random() * window.innerWidth 
+                    });
+                    animatePetal(p);
+                }
+            });
+        };
+
+        animatePetal(petal);
       }
     }, containerRef);
 
-    return () => ctx.revert(); // cleanup
+    return () => ctx.revert();
   }, []);
 
   return (
     <>
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Ambient glow */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--color-gold-400)] opacity-10 blur-[100px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--color-rosegold)] opacity-10 blur-[100px] rounded-full mix-blend-screen" />
-        
-        {/* Petals container */}
+      {/* Global Petal Layer - Fixed to viewport but container is full height */}
+      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
         <div ref={containerRef} className="absolute inset-0" />
+      </div>
+
+      {/* Persistent Ambient Glows */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--color-gold-400)] opacity-5 blur-[120px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--color-rosegold)] opacity-5 blur-[120px] rounded-full mix-blend-screen" />
       </div>
 
       <style jsx global>{`
         .petal {
           position: absolute;
-          width: 15px;
-          height: 15px;
-          background-color: var(--color-rosegold);
-          border-radius: 15px 0 15px 0;
-          opacity: 0.6;
-          box-shadow: 0 0 5px rgba(183, 110, 121, 0.4);
+          width: 14px;
+          height: 14px;
+          background-color: #b76e79;
+          border-radius: 14px 0 14px 0;
+          opacity: 0.5;
+          box-shadow: 0 0 6px rgba(183, 110, 121, 0.2);
+          pointer-events: none;
+          will-change: transform;
         }
       `}</style>
     </>

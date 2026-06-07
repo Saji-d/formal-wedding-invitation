@@ -7,23 +7,18 @@ export const weddingConfig = {
     togetherForever: "Together Forever",
   },
   events: {
-    mehendi: {
-      name: "Mehendi / Holud",
-      date: "2026-07-16T18:00:00",
-      displayDate: "16 July 2026",
-    },
     wedding: {
       name: "Wedding Ceremony",
       date: "2026-07-17T19:00:00",
-      displayDate: "17 July 2026",
+      displayDate: "Friday, 17 July 2026",
     },
   },
   venue: {
-    name: "Luxury Grand Hotel (Placeholder)",
-    address: "123 Royal Avenue, Celebration City",
+    name: "Luxury Grand Hotel (Dhaka)",
+    address: "Royal Avenue, Dhaka, Bangladesh",
     coordinates: {
       lat: 23.8103,
-      lng: 90.4125, // Placeholder Dhaka coordinates
+      lng: 90.4125,
     },
     mapZoom: 14,
   },
@@ -66,12 +61,30 @@ export const weddingConfig = {
     "A successful marriage requires falling in love many times, always with the same person.",
   ],
   gallery: [
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1583939008713-356f183748cd?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1505902987943-7f722a945d94?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000",
+    {
+      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2000",
+      caption: "Where it all began ❤️"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000",
+      caption: "Our favorite memory"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1583939008713-356f183748cd?auto=format&fit=crop&q=80&w=2000",
+      caption: "Hand in hand, heart to heart"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000",
+      caption: "Laughter and Joy"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1505902987943-7f722a945d94?auto=format&fit=crop&q=80&w=2000",
+      caption: "Moments of Serenity"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000",
+      caption: "Forever starts here"
+    },
   ],
   islamicBlessing: {
     arabic: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنفُسِكُمْ أَزْوَاجًا",
@@ -81,16 +94,20 @@ export const weddingConfig = {
     rsvp: {
       url: "https://docs.google.com/forms/d/e/1FAIpQLSdLVMQ3jTmsOeOn0fAVWT9yfHFz-sk-mjR3TMgLVxLLKposcQ/formResponse",
       entries: {
-        name: "entry.2606285",
-        phone: "entry.1498135098",
-        status: "entry.877086558",
+        name: "entry.2606285", // VERIFIED: Full Name
+        phone: "entry.1498135098", // VERIFIED: Phone Number
+        status: "entry.877086558", // VERIFIED: Will you attend?
+      },
+      values: {
+        accept: "JOYFULLY ACCEPT",
+        decline: "REGRETFULLY DECLINE"
       }
     },
     blessings: {
-      url: "https://docs.google.com/forms/d/e/1FAIpQLSel1TQ1kszNAWjgsjZC9ZJG5J0wdj0uKahOfoexBuLj5W-V1A/formResponse",
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSfzTxUxQyfJDJBjTocLUtg6OjuRvynO7Bz6G1-ewaxNS53z9g/formResponse",
       entries: {
-        name: "entry.2006231545",
-        message: "entry.959335750",
+        name: "entry.1498135098", // VERIFIED: Name
+        message: "entry.2606285", // VERIFIED: Blessing / Message
       }
     }
   }

@@ -6,7 +6,7 @@ import { HiChevronDown } from "react-icons/hi";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
       <motion.div
         className="z-10 text-center space-y-6 px-4 max-w-4xl"
         initial={{ opacity: 0, scale: 0.9 }}

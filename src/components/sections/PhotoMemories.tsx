@@ -50,7 +50,7 @@ export default function PhotoMemories() {
               transition={{ duration: 1.5 }}
             >
               <Image
-                src={images[currentIndex]}
+                src={images[currentIndex].src}
                 alt={`Memory ${currentIndex + 1}`}
                 fill
                 className="object-cover"

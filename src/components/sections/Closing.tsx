@@ -7,7 +7,7 @@ import { HiHeart } from "react-icons/hi";
 export default function Closing() {
   return (
     <section className="py-32 px-4 bg-[var(--background)] text-center relative overflow-hidden">
-      <div className="max-w-4xl mx-auto relative z-10 space-y-12">
+      <div className="max-w-4xl mx-auto relative z-10 space-y-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -34,20 +34,30 @@ export default function Closing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-6xl md:text-8xl font-great-vibes text-[var(--color-gold-500)]"
+          className="text-6xl md:text-9xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-md"
         >
           {weddingConfig.couple.displayName1} & {weddingConfig.couple.displayName2}
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="font-cormorant tracking-[0.2em] uppercase text-gray-500 pt-12"
+          className="pt-12"
         >
-          {weddingConfig.events.wedding.displayDate}
-        </motion.p>
+          <div className="inline-block px-16 py-8 border-y border-[var(--color-gold-400)]/40 relative group">
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 bg-[var(--color-gold-400)]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            
+            <p className="font-playfair text-xl md:text-2xl tracking-[0.4em] text-[var(--color-gold-500)] mb-4 uppercase">
+                Friday
+            </p>
+            <p className="font-playfair text-4xl md:text-7xl font-bold tracking-widest bg-gradient-to-b from-[#F7E7CE] via-[#D4AF37] to-[#AA7C11] bg-clip-text text-transparent drop-shadow-sm">
+                17 JULY 2026
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

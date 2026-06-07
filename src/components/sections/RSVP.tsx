@@ -3,14 +3,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
-import { FaWhatsapp } from "react-icons/fa";
-import { HiOutlinePhone } from "react-icons/hi";
-import confetti from "canvas-confetti";
 
 export default function RSVP() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [attending, setAttending] = useState<"YES" | "NO" | null>(null);
+  const [attending, setAttending] = useState<"JOYFULLY ACCEPT" | "REGRETFULLY DECLINE" | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,24 +17,47 @@ export default function RSVP() {
 
     setIsLoading(true);
 
-    const formData = new FormData();
-    formData.append(weddingConfig.googleForms.rsvp.entries.name, name);
-    formData.append(weddingConfig.googleForms.rsvp.entries.phone, phone);
-    formData.append(
-      weddingConfig.googleForms.rsvp.entries.status,
-      attending === "YES" ? "Joyfully Accept" : "Regretfully Decline"
-    );
+    const url = weddingConfig.googleForms.rsvp.url;
+    const payload = {
+      [weddingConfig.googleForms.rsvp.entries.name]: name,
+      [weddingConfig.googleForms.rsvp.entries.phone]: phone,
+      [weddingConfig.googleForms.rsvp.entries.status]: attending,
+    };
+
+    // CRITICAL DIAGNOSTIC LOGS
+    console.log("--- GOOGLE FORM RSVP SUBMISSION ---");
+    console.log("Google form URL:", url);
+    console.log("Submitting form payload:", payload);
+
+    const formData = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+    
+    // Add required hidden fields for Google Forms
+    formData.append("fvv", "1");
+    formData.append("pageHistory", "0");
 
     try {
       // Silent submission to Google Forms
-      await fetch(weddingConfig.googleForms.rsvp.url, {
+      const response = await fetch(url, {
         method: "POST",
         mode: "no-cors",
-        body: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
       });
 
-      // Trigger confetti on acceptance
-      if (attending === "YES") {
+      // NO-CORS means status is 0, but if it doesn't throw, it likely sent.
+      console.log("Response status:", response.status);
+      console.log("Response result:", response);
+      
+      setIsSubmitted(true);
+      
+      // Optional: trigger confetti locally on acceptance
+      if (attending === "JOYFULLY ACCEPT") {
+        const confetti = (await import("canvas-confetti")).default;
         confetti({
           particleCount: 150,
           spread: 70,
@@ -45,21 +65,12 @@ export default function RSVP() {
           colors: ["#d4af37", "#b76e79", "#800020"]
         });
       }
-
-      setIsSubmitted(true);
     } catch (error) {
       console.error("Submission failed:", error);
-      alert("Something went wrong. Please try again or RSVP via WhatsApp.");
+      alert("Something went wrong. Please check your internet and try again.");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleWhatsAppRSVP = () => {
-    const status = attending === "YES" ? "Joyfully Accept" : "Regretfully Decline";
-    const text = `Hello! I am ${name}. I ${status} your wedding invitation.`;
-    const url = `https://wa.me/${weddingConfig.whatsapp.number}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
   };
 
   return (
@@ -108,17 +119,14 @@ export default function RSVP() {
               <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                 Phone Number
               </label>
-              <div className="relative">
-                <HiOutlinePhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                  className="w-full pl-12 pr-4 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
-                  placeholder="e.g. +880 1XXX XXXXXX"
-                />
-              </div>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                className="w-full px-6 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
+                placeholder="e.g. +880 1XXX XXXXXX"
+              />
             </div>
 
             <div>
@@ -128,9 +136,9 @@ export default function RSVP() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
-                  onClick={() => setAttending("YES")}
+                  onClick={() => setAttending("JOYFULLY ACCEPT")}
                   className={`flex-1 py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
-                    attending === "YES"
+                    attending === "JOYFULLY ACCEPT"
                       ? "bg-[var(--color-burgundy-800)] text-[var(--color-champagne)] border-[var(--color-burgundy-800)]"
                       : "bg-transparent text-[var(--color-burgundy-800)] dark:text-white border-[var(--color-gold-400)] hover:bg-[var(--color-gold-400)]/10"
                   }`}
@@ -139,9 +147,9 @@ export default function RSVP() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setAttending("NO")}
+                  onClick={() => setAttending("REGRETFULLY DECLINE")}
                   className={`flex-1 py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
-                    attending === "NO"
+                    attending === "REGRETFULLY DECLINE"
                       ? "bg-gray-600 text-white border-gray-600"
                       : "bg-transparent text-gray-600 dark:text-gray-300 border-gray-400 hover:bg-gray-400/10"
                   }`}
@@ -173,24 +181,13 @@ export default function RSVP() {
             className="glass p-12 rounded-3xl space-y-6 border border-[var(--color-gold-400)]/20 shadow-2xl"
           >
             <h3 className="text-3xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
-              {attending === "YES" ? "Can't wait to see you!" : "You will be missed!"}
+              {attending === "JOYFULLY ACCEPT" ? "Can't wait to see you!" : "You will be missed!"}
             </h3>
-            <p className="font-cormorant text-xl text-gray-700 dark:text-gray-300">
-              Thank you for confirming your attendance. We look forward to celebrating with you. ❤️
+            <p className="font-cormorant text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+              {attending === "JOYFULLY ACCEPT" 
+                ? "Thank you for confirming your attendance. We look forward to celebrating with you. ❤️"
+                : "Thank you for letting us know. While we'll miss celebrating with you in person, your love, prayers, and blessings mean the world to us. ❤️"}
             </p>
-            
-            <div className="pt-8 mt-8 border-t border-[var(--color-gold-400)]/30">
-              <p className="font-cormorant text-lg mb-4 text-gray-600 dark:text-gray-400">
-                You can also update your response directly via WhatsApp
-              </p>
-              <button
-                onClick={handleWhatsAppRSVP}
-                className="inline-flex items-center justify-center gap-3 px-8 py-3 bg-[#25D366] text-white rounded-full hover:bg-[#128C7E] transition-colors duration-300 font-cormorant tracking-widest uppercase shadow-lg"
-              >
-                <FaWhatsapp className="w-6 h-6" />
-                Confirm on WhatsApp
-              </button>
-            </div>
           </motion.div>
         )}
       </div>
