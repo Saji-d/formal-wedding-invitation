@@ -58,7 +58,7 @@ export const weddingConfig = {
     url: "/music/wedding-bgm.mp3",
   },
   whatsapp: {
-    number: "1234567890", // Placeholder
+    number: "8801954832959",
   },
   quotes: [
     "I have found the one whom my soul loves.",
@@ -77,5 +77,21 @@ export const weddingConfig = {
     arabic: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنفُسِكُمْ أَزْوَاجًا",
     translation: "And of His signs is that He created for you from yourselves mates that you may find tranquillity in them...",
   },
-  googleSheetUrl: process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL || "",
+  googleForms: {
+    rsvp: {
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSdLVMQ3jTmsOeOn0fAVWT9yfHFz-sk-mjR3TMgLVxLLKposcQ/formResponse",
+      entries: {
+        name: "entry.2606285",
+        phone: "entry.1498135098",
+        status: "entry.877086558",
+      }
+    },
+    blessings: {
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSel1TQ1kszNAWjgsjZC9ZJG5J0wdj0uKahOfoexBuLj5W-V1A/formResponse",
+      entries: {
+        name: "entry.2006231545",
+        message: "entry.959335750",
+      }
+    }
+  }
 };

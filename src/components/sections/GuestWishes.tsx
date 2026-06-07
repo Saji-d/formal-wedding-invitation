@@ -1,30 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineUser, HiOutlinePencil } from "react-icons/hi";
-import { submitToGoogleSheets } from "@/lib/googleSheets";
-
-interface Wish {
-  id: string;
-  name: string;
-  message: string;
-  date: string;
-}
+import { weddingConfig } from "@/config/wedding";
 
 export default function GuestWishes() {
-  const [wishes, setWishes] = useState<Wish[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("wedding_wishes");
-    if (saved) {
-      setWishes(JSON.parse(saved));
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,24 +17,18 @@ export default function GuestWishes() {
 
     setIsLoading(true);
 
+    const formData = new FormData();
+    formData.append(weddingConfig.googleForms.blessings.entries.name, name.trim());
+    formData.append(weddingConfig.googleForms.blessings.entries.message, message.trim());
+
     try {
-      await submitToGoogleSheets({
-        name: name.trim(),
-        message: message.trim(),
-        source: "Guest Wish"
+      // Silent submission to Google Forms
+      await fetch(weddingConfig.googleForms.blessings.url, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
       });
 
-      const newWish: Wish = {
-        id: Date.now().toString(),
-        name: name.trim(),
-        message: message.trim(),
-        date: new Date().toLocaleDateString(),
-      };
-
-      const updatedWishes = [newWish, ...wishes];
-      setWishes(updatedWishes);
-      localStorage.setItem("wedding_wishes", JSON.stringify(updatedWishes));
-      
       setName("");
       setMessage("");
       setIsSuccess(true);
@@ -64,7 +43,7 @@ export default function GuestWishes() {
 
   return (
     <section className="py-24 px-4 bg-[var(--background)]">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,21 +55,22 @@ export default function GuestWishes() {
             Guest Book
           </h2>
           <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-6"></div>
-          <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400">
-            Leave a message for the couple
+          <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+            Share your blessings, prayers, and heartfelt wishes for Sajid & Dilruba ❤️
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="w-full flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="w-full max-w-[700px]"
           >
-            <form onSubmit={handleSubmit} className="space-y-6 glass p-8 rounded-3xl">
+            <form onSubmit={handleSubmit} className="space-y-6 glass p-8 md:p-12 rounded-3xl shadow-xl border border-[var(--color-gold-400)]/20">
               <div>
-                <label className="block font-cormorant text-lg mb-2 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+                <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                   Your Name
                 </label>
                 <div className="relative">
@@ -100,14 +80,14 @@ export default function GuestWishes() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full pl-12 pr-4 py-3 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
-                    placeholder="John Doe"
+                    className="w-full pl-12 pr-4 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
+                    placeholder="Enter your name"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-cormorant text-lg mb-2 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+                <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                   Your Message
                 </label>
                 <div className="relative">
@@ -117,8 +97,8 @@ export default function GuestWishes() {
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={4}
-                    className="w-full pl-12 pr-4 py-3 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg resize-none"
-                    placeholder="Wishing you a lifetime of love and happiness..."
+                    className="w-full pl-12 pr-4 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg resize-none"
+                    placeholder="Write your wishes here..."
                   />
                 </div>
               </div>
@@ -126,15 +106,15 @@ export default function GuestWishes() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 bg-[var(--color-gold-400)] text-white rounded-xl hover:bg-[var(--color-gold-500)] transition-colors duration-300 font-cormorant tracking-widest uppercase shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full py-4 bg-[var(--color-gold-400)] text-white rounded-xl hover:bg-[var(--color-gold-500)] transition-all duration-300 font-cormorant tracking-widest uppercase text-lg shadow-lg disabled:opacity-50 flex items-center justify-center gap-3"
               >
                 {isLoading ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Sending...
                   </>
                 ) : (
-                  "Send Wish"
+                  "Send Blessings"
                 )}
               </button>
 
@@ -144,49 +124,13 @@ export default function GuestWishes() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="text-center font-cormorant text-green-600 dark:text-green-400"
+                    className="text-center font-cormorant text-green-600 dark:text-green-400 text-lg mt-4"
                   >
-                    Your wishes have been received 🌸
+                    Thank you for your heartfelt blessings and wishes. ❤️
                   </motion.p>
                 )}
               </AnimatePresence>
             </form>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-[400px] overflow-y-auto pr-4 custom-scrollbar space-y-4"
-          >
-            <AnimatePresence>
-              {wishes.length === 0 ? (
-                <p className="text-center font-cormorant text-gray-500 italic mt-10">
-                  Be the first to leave a wish!
-                </p>
-              ) : (
-                wishes.map((wish) => (
-                  <motion.div
-                    key={wish.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    layout
-                    className="glass p-6 rounded-2xl border border-[var(--color-gold-400)]/20"
-                  >
-                    <p className="font-playfair text-xl text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-2">
-                      {wish.name}
-                    </p>
-                    <p className="font-cormorant text-gray-700 dark:text-gray-300 leading-relaxed mb-2">
-                      "{wish.message}"
-                    </p>
-                    <span className="text-xs text-gray-500 font-cormorant tracking-widest">
-                      {wish.date}
-                    </span>
-                  </motion.div>
-                ))
-              )}
-            </AnimatePresence>
           </motion.div>
         </div>
       </div>

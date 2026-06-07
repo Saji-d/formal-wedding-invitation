@@ -6,7 +6,6 @@ import { weddingConfig } from "@/config/wedding";
 import { FaWhatsapp } from "react-icons/fa";
 import { HiOutlinePhone } from "react-icons/hi";
 import confetti from "canvas-confetti";
-import { submitToGoogleSheets } from "@/lib/googleSheets";
 
 export default function RSVP() {
   const [name, setName] = useState("");
@@ -21,15 +20,23 @@ export default function RSVP() {
 
     setIsLoading(true);
 
+    const formData = new FormData();
+    formData.append(weddingConfig.googleForms.rsvp.entries.name, name);
+    formData.append(weddingConfig.googleForms.rsvp.entries.phone, phone);
+    formData.append(
+      weddingConfig.googleForms.rsvp.entries.status,
+      attending === "YES" ? "Joyfully Accept" : "Regretfully Decline"
+    );
+
     try {
-      await submitToGoogleSheets({
-        name,
-        phone,
-        status: attending === "YES" ? "Attending" : "Not Attending",
-        source: "RSVP"
+      // Silent submission to Google Forms
+      await fetch(weddingConfig.googleForms.rsvp.url, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
       });
 
-      // Trigger confetti
+      // Trigger confetti on acceptance
       if (attending === "YES") {
         confetti({
           particleCount: 150,
@@ -49,7 +56,8 @@ export default function RSVP() {
   };
 
   const handleWhatsAppRSVP = () => {
-    const text = `Hello! I am ${name}. I will ${attending === "YES" ? "be attending" : "not be able to attend"} your wedding.`;
+    const status = attending === "YES" ? "Joyfully Accept" : "Regretfully Decline";
+    const text = `Hello! I am ${name}. I ${status} your wedding invitation.`;
     const url = `https://wa.me/${weddingConfig.whatsapp.number}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
@@ -64,8 +72,8 @@ export default function RSVP() {
           transition={{ duration: 1 }}
           className="mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
-            RSVP
+          <h2 className="text-4xl md:text-6xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4 uppercase tracking-wider">
+            Will You Join Our Celebration?
           </h2>
           <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-6"></div>
           <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400">
@@ -80,7 +88,7 @@ export default function RSVP() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass p-8 md:p-12 rounded-3xl space-y-8 text-left"
+            className="glass p-8 md:p-12 rounded-3xl space-y-8 text-left border border-[var(--color-gold-400)]/20 shadow-xl"
           >
             <div>
               <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
@@ -117,7 +125,7 @@ export default function RSVP() {
               <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                 Will you attend?
               </label>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
                   onClick={() => setAttending("YES")}
@@ -154,7 +162,7 @@ export default function RSVP() {
                   Processing...
                 </>
               ) : (
-                "Submit RSVP"
+                "Confirm Attendance"
               )}
             </button>
           </motion.form>
@@ -162,20 +170,18 @@ export default function RSVP() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass p-12 rounded-3xl space-y-6"
+            className="glass p-12 rounded-3xl space-y-6 border border-[var(--color-gold-400)]/20 shadow-2xl"
           >
             <h3 className="text-3xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
               {attending === "YES" ? "Can't wait to see you!" : "You will be missed!"}
             </h3>
             <p className="font-cormorant text-xl text-gray-700 dark:text-gray-300">
-              {attending === "YES" 
-                ? "Thank you for confirming. We are so excited to celebrate with you!" 
-                : "Thank you for letting us know. We will celebrate with you in spirit."}
+              Thank you for confirming your attendance. We look forward to celebrating with you. ❤️
             </p>
             
             <div className="pt-8 mt-8 border-t border-[var(--color-gold-400)]/30">
               <p className="font-cormorant text-lg mb-4 text-gray-600 dark:text-gray-400">
-                You can also confirm your RSVP directly via WhatsApp
+                You can also update your response directly via WhatsApp
               </p>
               <button
                 onClick={handleWhatsAppRSVP}
