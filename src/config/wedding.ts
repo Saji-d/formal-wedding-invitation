@@ -62,7 +62,7 @@ export const weddingConfig = {
   ],
   gallery: [
     {
-      src: "/images/gallery/1.PNG",
+      src: "/images/gallery/1.jpeg",
       caption: "Where it all began ❤️"
     },
     {
@@ -84,6 +84,18 @@ export const weddingConfig = {
     {
       src: "/images/gallery/6.jpeg",
       caption: "Forever starts here"
+    },
+    {
+      src: "/images/gallery/7.jpeg",
+      caption: "Sweetest Moments"
+    },
+    {
+      src: "/images/gallery/8.jpeg",
+      caption: "Love in every frame"
+    },
+    {
+      src: "/images/gallery/9.jpeg",
+      caption: "Together is our favorite place"
     },
   ],
   islamicBlessing: {
