@@ -62,27 +62,27 @@ export const weddingConfig = {
   ],
   gallery: [
     {
-      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/1.PNG",
       caption: "Where it all began ❤️"
     },
     {
-      src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/2.jpeg",
       caption: "Our favorite memory"
     },
     {
-      src: "https://images.unsplash.com/photo-1583939008713-356f183748cd?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/3.jpeg",
       caption: "Hand in hand, heart to heart"
     },
     {
-      src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/4.jpeg",
       caption: "Laughter and Joy"
     },
     {
-      src: "https://images.unsplash.com/photo-1505902987943-7f722a945d94?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/5.jpeg",
       caption: "Moments of Serenity"
     },
     {
-      src: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000",
+      src: "/images/gallery/6.jpeg",
       caption: "Forever starts here"
     },
   ],

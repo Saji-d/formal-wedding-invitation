@@ -3,29 +3,44 @@
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
 import { HiChevronDown } from "react-icons/hi";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden px-4">
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/gallery/1.PNG"
+          alt="Wedding Hero"
+          fill
+          className="object-cover"
+          priority
+          quality={100}
+        />
+        {/* Elegant Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[var(--background)] opacity-80"></div>
+      </div>
+
       <motion.div
-        className="z-10 text-center space-y-8 md:space-y-12 max-w-4xl -mt-16 md:mt-0"
+        className="z-10 text-center space-y-8 md:space-y-12 max-w-4xl -mt-16 md:mt-0 px-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
       >
-        <p className="text-xs md:text-sm font-cormorant tracking-[0.4em] uppercase text-[var(--color-gold-500)] mb-8 md:mb-12">
+        <p className="text-xs md:text-sm font-cormorant tracking-[0.4em] uppercase text-[var(--color-gold-400)] mb-8 md:mb-12">
           You are invited
         </p>
 
-        <h1 className="text-6xl md:text-9xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] drop-shadow-sm leading-tight">
+        <h1 className="text-6xl md:text-9xl font-great-vibes text-[var(--color-ivory)] drop-shadow-2xl leading-tight">
           {weddingConfig.couple.displayName1}
-          <span className="block text-4xl md:text-7xl text-[var(--color-rosegold)] my-4 md:my-6">&</span>
+          <span className="block text-4xl md:text-7xl text-[var(--color-gold-400)] my-4 md:my-6">&</span>
           {weddingConfig.couple.displayName2}
         </h1>
 
-        <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto my-8 md:my-12 opacity-50"></div>
+        <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto my-8 md:my-12 opacity-70"></div>
 
-        <p className="text-xl md:text-3xl font-playfair italic text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] leading-relaxed px-2">
+        <p className="text-xl md:text-3xl font-playfair italic text-[var(--color-champagne)] leading-relaxed px-2 drop-shadow-lg">
           Request the honor of your presence <br className="hidden md:block" /> at our wedding celebration.
         </p>
       </motion.div>
@@ -41,10 +56,10 @@ export default function Hero() {
           repeatType: "reverse",
         }}
       >
-        <span className="text-xs tracking-widest uppercase mb-2 font-cormorant text-[var(--color-gold-500)]">
+        <span className="text-xs tracking-widest uppercase mb-2 font-cormorant text-[var(--color-gold-400)]">
           Scroll to discover
         </span>
-        <HiChevronDown className="w-6 h-6 text-[var(--color-gold-500)]" />
+        <HiChevronDown className="w-6 h-6 text-[var(--color-gold-400)]" />
       </motion.div>
     </section>
   );
