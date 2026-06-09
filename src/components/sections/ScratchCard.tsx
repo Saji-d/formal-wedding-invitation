@@ -180,9 +180,7 @@ export default function ScratchCard() {
           </AnimatePresence>
         </div>
         
-        <p className="mt-10 font-playfair italic text-[var(--color-gold-500)] opacity-60 text-sm">
-          Foil texture inspired by luxury gold leaf
-        </p>
+
       </div>
     </section>
   );

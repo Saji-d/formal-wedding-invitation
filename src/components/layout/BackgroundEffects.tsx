@@ -5,7 +5,6 @@ import gsap from "gsap";
 
 export default function BackgroundEffects() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const petalsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -14,66 +13,59 @@ export default function BackgroundEffects() {
       const container = containerRef.current;
       if (!container) return;
 
-      const petalCount = 45;
+      const petalCount = 75; // Increased density by 25%
       
       for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement("div");
-        petal.className = "petal hidden-initially"; // Hide initially in CSS to prevent top-left flash
+        petal.className = "petal"; 
         
         container.appendChild(petal);
-        petalsRef.current.push(petal);
 
-        // Initial setup - ALWAYS safely above viewport
+        // Initial setup - Distribute across the ENTIRE viewport so animation begins instantly
+        const initialY = (Math.random() * window.innerHeight * 1.2) - (window.innerHeight * 0.2);
+
         gsap.set(petal, {
           x: Math.random() * window.innerWidth,
-          y: -150 - (Math.random() * window.innerHeight * 2), // distribute highly above screen
+          y: initialY,
           rotation: Math.random() * 360,
-          scale: 0.5 + Math.random() * 0.7,
-          opacity: 0, // start invisible
+          scale: 0.4 + Math.random() * 0.8,
+          opacity: 0.3 + Math.random() * 0.6, 
         });
 
         const animatePetal = (p: HTMLElement, isCeremonial = false) => {
-            // Unhide immediately before animation starts
-            p.classList.remove('hidden-initially');
-            
-            const duration = isCeremonial ? 3 + Math.random() * 4 : 15 + Math.random() * 10;
+            const duration = isCeremonial ? 3 + Math.random() * 4 : 12 + Math.random() * 15;
             const currentWidth = window.innerWidth;
             const currentHeight = window.innerHeight;
             
-            // True rainfall effect
+            // True rainfall effect with soft organic drift
             gsap.to(p, {
-                y: currentHeight + 150, // fall safely past bottom
-                x: `+=${-15 + Math.random() * 30}`, // very minimal horizontal sway
-                rotation: `+=${180 + Math.random() * 180}`,
-                opacity: 0.2 + Math.random() * 0.4, // fade in naturally
+                y: currentHeight + 150, 
+                x: `+=${-30 + Math.random() * 60}`, // Soft horizontal drift
+                rotation: `+=${180 + Math.random() * 270}`, // Gentle organic rotation
+                opacity: 0.3 + Math.random() * 0.5, 
                 duration: duration,
                 ease: isCeremonial ? "power1.in" : "none",
                 onComplete: () => {
                     // Reset to just above viewport, random X
                     gsap.set(p, { 
-                        y: -150 - (Math.random() * 100), 
+                        y: -50 - (Math.random() * 100), 
                         x: Math.random() * currentWidth,
-                        opacity: 0 // hide during reset
                     });
-                    // Only loop normal animation
                     if(!isCeremonial) {
                         animatePetal(p);
                     } else {
-                        // After ceremonial, return to slow loop with delay
                         setTimeout(() => animatePetal(p), Math.random() * 5000);
                     }
                 }
             });
         };
 
-        // Start standard animation immediately
         animatePetal(petal);
       }
       
-      // Listen for ceremonial event
       const handleCeremonialShower = () => {
-         // Create a temporary burst of extra petals
-         for(let i=0; i < 30; i++) {
+         // Create a temporary burst of extra petals (Ceremonial shower)
+         for(let i=0; i < 50; i++) {
              const tempPetal = document.createElement("div");
              tempPetal.className = "petal";
              container.appendChild(tempPetal);
@@ -83,18 +75,17 @@ export default function BackgroundEffects() {
                   y: -50 - (Math.random() * 200), 
                   rotation: Math.random() * 360,
                   scale: 0.6 + Math.random() * 0.8,
-                  opacity: 0,
+                  opacity: 0.6 + Math.random() * 0.4,
              });
              
              gsap.to(tempPetal, {
                 y: window.innerHeight + 200,
-                x: `+=${-50 + Math.random() * 100}`,
+                x: `+=${-60 + Math.random() * 120}`,
                 rotation: `+=${360 + Math.random() * 360}`,
-                opacity: 0.5 + Math.random() * 0.4,
-                duration: 2 + Math.random() * 3,
+                duration: 2.5 + Math.random() * 3,
                 ease: "power2.in",
                 onComplete: () => {
-                    tempPetal.remove(); // Cleanup
+                    tempPetal.remove(); 
                 }
              });
          }
@@ -108,7 +99,13 @@ export default function BackgroundEffects() {
 
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // ROOT CAUSE FIX: Clean up appended DOM nodes so they don't linger without animations during Strict Mode remount
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
   }, []);
 
   return (
@@ -121,15 +118,14 @@ export default function BackgroundEffects() {
       <style jsx global>{`
         .petal {
           position: absolute;
+          top: -50px; /* Safe default off-screen position */
+          left: -50px;
           width: 14px;
           height: 14px;
           background-color: #b76e79;
           border-radius: 14px 0 14px 0;
           pointer-events: none;
           will-change: transform, opacity;
-        }
-        .hidden-initially {
-          display: none !important;
         }
       `}</style>
     </>

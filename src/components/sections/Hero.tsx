@@ -40,20 +40,20 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="z-20 text-center space-y-8 md:space-y-12 lg:space-y-10 max-w-4xl -mt-16 md:mt-0 lg:-mt-10 px-4"
+        className="z-20 text-center max-w-4xl -mt-20 md:mt-0 lg:-mt-10 px-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
       >
         <p 
-          className="text-xs md:text-sm font-cormorant tracking-[0.4em] uppercase text-[#ffdf8a] mb-8 md:mb-12 opacity-100 font-bold"
+          className="text-xs md:text-sm font-cormorant tracking-[0.4em] uppercase text-[#ffdf8a] mb-12 md:mb-12 lg:mb-10 opacity-100 font-bold"
           style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}
         >
           You are invited
         </p>
 
         <h1 
-          className="text-6xl md:text-9xl font-great-vibes text-[var(--color-ivory)] drop-shadow-2xl leading-tight"
+          className="text-6xl md:text-9xl font-great-vibes text-[var(--color-ivory)] drop-shadow-2xl leading-tight mb-8 md:mb-12 lg:mb-10"
           style={{ textShadow: "0 4px 24px rgba(0,0,0,0.7)" }}
         >
           {weddingConfig.couple.displayName1}
@@ -61,7 +61,7 @@ export default function Hero() {
           {weddingConfig.couple.displayName2}
         </h1>
 
-        <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto my-6 md:my-8 lg:my-10 opacity-70"></div>
+        <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-8 md:mb-12 lg:mb-10 opacity-70"></div>
 
         <p 
           className="text-xl md:text-3xl font-playfair italic text-[var(--color-champagne)] leading-relaxed px-2 drop-shadow-lg"

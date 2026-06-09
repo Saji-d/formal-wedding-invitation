@@ -76,15 +76,15 @@ export default function LoveStory() {
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                   <div className="w-full aspect-[16/9] glass p-2 md:p-8 rounded-2xl flex flex-col justify-center items-center border border-[var(--color-gold-400)]/20 shadow-xl text-center">
-                    <div className="mb-1 md:mb-3">
-                      <span className="inline-block px-2 py-0.5 md:px-4 md:py-1.5 bg-[var(--color-gold-400)]/10 text-[var(--color-gold-500)] text-[8px] md:text-sm font-playfair font-medium tracking-widest uppercase rounded-full border border-[var(--color-gold-400)]/30">
+                    <h3 className="text-xs md:text-xl font-playfair font-bold text-[#F4D7A1] mb-1 md:mb-2 leading-tight uppercase tracking-wider drop-shadow-md">
+                      {item.title}
+                    </h3>
+                    <div className="mb-2 md:mb-4">
+                      <span className="inline-block text-[var(--color-gold-400)] text-[8px] md:text-sm font-cormorant tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-90">
                         {item.date}
                       </span>
                     </div>
-                    <h3 className="text-[10px] md:text-2xl font-playfair font-bold text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-1 md:mb-3 leading-tight uppercase">
-                      {item.title}
-                    </h3>
-                    <p className="font-cormorant text-[8px] sm:text-xs md:text-lg text-gray-700 dark:text-gray-300 leading-tight md:leading-relaxed italic">
+                    <p className="font-cormorant text-[10px] sm:text-xs md:text-lg text-[#fffff0] opacity-90 leading-tight md:leading-relaxed italic">
                       "{item.description}"
                     </p>
                   </div>
