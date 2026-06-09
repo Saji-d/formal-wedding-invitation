@@ -2,13 +2,29 @@
 
 # ❤️ Sajid & Dilruba | Wedding Invitation
 
+[![Live Website](https://img.shields.io/badge/Live_Website-Experience_Here-D4AF37?style=for-the-badge&logo=vercel&logoColor=white)](https://sajid-weds-dilruba.vercel.app/)
+
 A digital celebration of love, commitment, and the beautiful journey ahead.
 
 </div>
 
-<p align="center">
-  <em>Every beautiful journey begins with a single step. What started as a simple connection gradually blossomed into friendship, trust, love, and a promise for a lifetime together. As we prepare to begin this new chapter, we are honored to invite our family, friends, and loved ones to share in our joy.</em>
-</p>
+---
+
+## 💞 Our Story
+
+Every beautiful journey begins with a single step. Our story began with a movie date. Friendship grew naturally through conversations, laughter, and shared moments. As time passed, that friendship slowly became love. A promise led to engagement, uniting our families and drawing our future closer. Now we prepare to begin our forever together, and we are so incredibly grateful to share this journey with you.
+
+## 🌸 Why This Website?
+
+This project was built as more than a wedding invitation. It was lovingly created to:
+
+- Preserve memories.
+- Tell our story.
+- Share important wedding details.
+- Provide a beautiful RSVP experience.
+- Create something meaningful for family and friends.
+
+Traditional invitation cards inspired the elegant design, while modern web technologies brought it to life.
 
 ---
 
@@ -47,6 +63,14 @@ A digital celebration of love, commitment, and the beautiful journey ahead.
   <br/>
   <em>RSVP Section</em>
 </div>
+
+---
+
+## 🌐 Live Preview
+
+Experience the complete invitation exactly as guests see it, including animations, countdowns, timeline interactions, RSVP functionality, and responsive layouts.
+
+[![Experience Live Website](https://img.shields.io/badge/View_Live_Invitation-Click_Here-800020?style=for-the-badge)](https://sajid-weds-dilruba.vercel.app/)
 
 ---
 
@@ -172,11 +196,14 @@ The invitation was developed with a mobile-first approach, recognizing that the 
 
 ---
 
-## 🤍 A Note From The Couple
+## 🤍 From the Couple
 
-*To our dearest family and friends, your love and support have been the greatest gifts in our lives. We are so incredibly excited to share this momentous occasion with you. Thank you for being part of our story, and we cannot wait to celebrate our union, create beautiful new memories, and begin our forever together. See you there!*
+To our dearest family and friends, your unwavering love and support have been the greatest gifts in our lives. We are so incredibly excited to share this momentous occasion with you. Thank you for being part of our journey. 
 
-— Sajid & Dilruba
+This website stands as a celebration of both our love for one another and the technology that helped us share it with the world. We cannot wait to celebrate our union, create beautiful new memories, and begin our forever together. See you there!
+
+With love and gratitude,  
+**Sajid & Dilruba**
 
 ---
 

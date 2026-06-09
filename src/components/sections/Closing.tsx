@@ -46,7 +46,7 @@ export default function Closing() {
           <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-none">
             {weddingConfig.couple.displayName1}
           </h2>
-          <span className="text-5xl font-great-vibes text-[var(--color-rosegold)] opacity-80 my-2">
+          <span className="text-6xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-none my-2">
             &
           </span>
           <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-none">
