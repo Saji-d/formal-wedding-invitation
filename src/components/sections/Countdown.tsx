@@ -61,15 +61,17 @@ export default function Countdown() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[var(--color-gold-400)] flex flex-col items-center justify-center glass bg-white/50 dark:bg-black/20 relative"
+              className="w-24 h-24 md:w-36 md:h-36 rounded-full flex flex-col items-center justify-center glass bg-white/60 dark:bg-black/40 relative group hover:scale-105 transition-transform duration-500 shadow-[0_4px_20px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_30px_rgba(212,175,55,0.25)] border border-[var(--color-gold-400)]/30"
             >
+              {/* Outer decorative ring */}
+              <div className="absolute inset-[-4px] rounded-full border border-[var(--color-gold-400)]/40 group-hover:border-[var(--color-gold-400)]/60 transition-colors duration-500"></div>
               {/* Inner ring animation */}
-              <div className="absolute inset-1 rounded-full border border-dashed border-[var(--color-gold-500)] opacity-50 animate-[spin_20s_linear_infinite]"></div>
+              <div className="absolute inset-2 rounded-full border border-dashed border-[var(--color-gold-500)] opacity-40 group-hover:opacity-70 animate-[spin_20s_linear_infinite] transition-opacity duration-500"></div>
               
-              <span className="text-4xl md:text-6xl font-playfair font-bold text-[var(--color-burgundy-800)] dark:text-[var(--color-ivory)] drop-shadow-sm">
+              <span className="text-4xl md:text-6xl font-playfair font-bold text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] drop-shadow-sm group-hover:scale-110 transition-transform duration-500 z-10">
                 {block.value.toString().padStart(2, "0")}
               </span>
-              <span className="text-xs tracking-widest uppercase font-cormorant text-[var(--color-gold-500)] mt-1">
+              <span className="text-[10px] md:text-sm tracking-[0.2em] uppercase font-cormorant text-[var(--color-gold-500)] mt-1 md:mt-2 z-10 font-medium">
                 {block.label}
               </span>
             </motion.div>

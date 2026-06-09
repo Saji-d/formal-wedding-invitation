@@ -72,7 +72,7 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-16 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-20"
+        className="absolute bottom-28 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-20"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{

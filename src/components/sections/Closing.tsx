@@ -14,7 +14,7 @@ export default function Closing() {
           viewport={{ once: true }}
           transition={{ duration: 1, type: "spring" }}
         >
-          <HiHeart className="w-8 md:w-10 h-8 md:h-10 text-[var(--color-rosegold)] mx-auto animate-pulse" />
+          <HiHeart className="w-12 md:w-10 h-12 md:h-10 text-[var(--color-rosegold)] mx-auto animate-pulse" />
         </motion.div>
 
         <motion.p
@@ -34,7 +34,7 @@ export default function Closing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm"
+          className="text-7xl md:text-7xl lg:text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm"
         >
           {weddingConfig.couple.displayName1} & {weddingConfig.couple.displayName2}
         </motion.h2>
@@ -53,7 +53,7 @@ export default function Closing() {
             <p className="font-playfair text-lg md:text-xl tracking-[0.4em] text-[var(--color-gold-500)] mb-2 md:mb-4 uppercase">
                 Friday
             </p>
-            <p className="font-playfair text-3xl md:text-6xl lg:text-7xl font-bold tracking-[0.15em] pl-[0.15em] bg-gradient-to-b from-[#F7E7CE] via-[#D4AF37] to-[#AA7C11] bg-clip-text text-transparent drop-shadow-sm">
+            <p className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold tracking-[0.15em] pl-[0.15em] bg-gradient-to-b from-[#F7E7CE] via-[#D4AF37] to-[#AA7C11] bg-clip-text text-transparent drop-shadow-sm">
                 17 JULY 2026
             </p>
           </div>

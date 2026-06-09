@@ -192,11 +192,9 @@ export default function RSVP() {
             }`}
           >
             <div className="flex justify-center mb-4">
-              <HiHeart className={`w-12 h-12 ${
-                attending === "JOYFULLY ACCEPT" ? "text-[var(--color-gold-400)]" : "text-[#B76E79]"
-              }`} />
+              <HiHeart className={`w-12 h-12 ${attending === "JOYFULLY ACCEPT" ? "text-[#C2185B] drop-shadow-[0_0_15px_rgba(194,24,91,0.6)] scale-110 transition-transform" : "text-[#B76E79] drop-shadow-sm"}`} />
             </div>
-            <h3 className="text-3xl md:text-4xl font-playfair font-bold text-[#B76E79] drop-shadow-[0_0_8px_rgba(183,110,121,0.4)]">
+            <h3 className={`text-3xl md:text-4xl font-playfair font-bold ${attending === "JOYFULLY ACCEPT" ? "text-[#C2185B] drop-shadow-[0_0_15px_rgba(194,24,91,0.6)] tracking-wide" : "text-[#B76E79] drop-shadow-[0_0_12px_rgba(183,110,121,0.5)]"}`}>
               {attending === "JOYFULLY ACCEPT" ? "Can't wait to see you!" : "You will be missed!"}
             </h3>
             <p className={`font-cormorant text-xl leading-relaxed ${

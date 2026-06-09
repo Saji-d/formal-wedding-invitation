@@ -3,17 +3,20 @@
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
 import { HiHeart } from "react-icons/hi";
+import Image from "next/image";
 
 export default function LoveStory() {
+  const images = weddingConfig.gallery.slice(1, 7); // Using first 6 gallery images
+
   return (
     <section className="py-24 px-4 relative bg-[var(--background)] z-10 border-t border-[var(--color-gold-400)]/5">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
             Our Love Story
@@ -26,38 +29,49 @@ export default function LoveStory() {
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[1px] bg-gradient-to-b from-transparent via-[var(--color-gold-400)] to-transparent opacity-50"></div>
 
           {weddingConfig.timeline.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`flex items-center justify-between w-full mb-8 lg:mb-8 ${
-                index % 2 === 0 ? "flex-row-reverse" : "flex-row"
-              }`}
-            >
-              <div className="w-5/12"></div>
-              
-              <div className="w-2/12 flex justify-center z-10 relative">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[var(--background)] border border-[var(--color-gold-400)] flex items-center justify-center shadow-lg">
-                   <HiHeart className="w-4 h-4 md:w-5 md:h-5 text-[var(--color-rosegold)]" />
+            <div key={index} className="flex flex-col relative w-full mb-16 lg:mb-24 last:mb-0">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className={`flex w-full items-stretch justify-center ${
+                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                }`}
+              >
+                {/* Image Side */}
+                <div className="w-[42%] px-2 md:px-6">
+                  <div className="relative w-full h-full min-h-[160px] md:min-h-[220px] rounded-2xl overflow-hidden shadow-xl border border-[var(--color-gold-400)]/20">
+                    <Image
+                      src={images[index]?.src || "/images/gallery/hero.jpeg"}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-5/12 glass p-4 lg:p-5 rounded-2xl relative flex flex-col items-center lg:min-h-0">
-                <h3 className="text-xl lg:text-xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-1 lg:mb-1 text-center w-full">
-                  {item.title}
-                </h3>
-                <div className="flex justify-center w-full mb-2 lg:mb-2">
-                  <span className="inline-block px-3 py-1 bg-[var(--color-gold-400)] text-white text-[10px] md:text-xs font-cormorant tracking-widest uppercase rounded-full">
-                    {item.date}
-                  </span>
+                {/* Center Icon */}
+                <div className="w-[16%] flex justify-center items-center z-10 relative shrink-0">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[var(--background)] border border-[var(--color-gold-400)] flex items-center justify-center shadow-lg relative">
+                    <div className="absolute inset-1 rounded-full border border-dashed border-[var(--color-gold-400)] opacity-50"></div>
+                     <HiHeart className="w-5 h-5 md:w-6 md:h-6 text-[var(--color-rosegold)] z-10" />
+                  </div>
                 </div>
-                <p className="font-cormorant text-base lg:text-base text-opacity-80 text-left w-full leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
+
+                {/* Content Side */}
+                <div className="w-[42%] px-2 md:px-6">
+                  <div className="h-full glass p-3 md:p-8 rounded-2xl w-full flex flex-col justify-center border border-[var(--color-gold-400)]/20 shadow-xl text-center">
+                    <h3 className="text-sm md:text-2xl font-playfair font-bold text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-2 md:mb-3 leading-tight uppercase">
+                      {item.title}
+                    </h3>
+                    <p className="font-cormorant text-xs md:text-lg text-gray-700 dark:text-gray-300 leading-snug md:leading-relaxed italic">
+                      "{item.description}"
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           ))}
         </div>
 

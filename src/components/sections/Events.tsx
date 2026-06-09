@@ -26,12 +26,16 @@ export default function Events() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center mb-12 opacity-80">
-          <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 12h45M75 12h45" stroke="var(--color-gold-400)" strokeWidth="1" strokeLinecap="round" />
-            <path d="M50 8l10 10l10-10-10-10z" fill="var(--color-gold-400)" fillOpacity="0.2" stroke="var(--color-gold-400)" strokeWidth="1" />
-            <circle cx="60" cy="12" r="3" fill="var(--color-gold-400)" />
-            <path d="M45 12c0-3 3-6 5-6M75 12c0-3-3-6-5-6" stroke="var(--color-gold-400)" strokeWidth="1" />
+        <div className="flex justify-center mb-12 opacity-90">
+          <svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q 60 20, 105 20 T 115 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
+            <path d="M220 20 Q 180 20, 135 20 T 125 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
+            {/* Center diamond/flower */}
+            <path d="M120 5 L125 15 L135 20 L125 25 L120 35 L115 25 L105 20 L115 15 Z" fill="var(--color-gold-400)" opacity="0.8"/>
+            {/* Flourishes */}
+            <path d="M90 20 Q 100 10, 105 20" stroke="var(--color-gold-400)" strokeWidth="1" fill="none"/>
+            <path d="M150 20 Q 140 30, 135 20" stroke="var(--color-gold-400)" strokeWidth="1" fill="none"/>
+            <circle cx="120" cy="20" r="3" fill="var(--background)" />
           </svg>
         </div>
 

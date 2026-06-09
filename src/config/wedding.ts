@@ -26,33 +26,33 @@ export const weddingConfig = {
   
   timeline: [
   {
-    title: "First Meeting",
+    title: "OUR BEGINNING",
     description: "The day our story quietly began with a movie date.",
     date: "June 2024",
   },
   {
-    title: "Friendship",
-    description: "Countless hours of talking, laughing, and understanding each other.",
+    title: "FRIENDSHIP",
+    description: "Day by day, we found comfort, understanding, and happiness in each other.",
     date: "August 2024",
   },
   {
-    title: "Love",
-    description: "Realizing that we were meant to be more than just friends.",
+    title: "LOVE",
+    description: "Every shared moment brought us closer to the love we celebrate today.",
     date: "September 2024",
   },
   {
-    title: "Promise",
-    description: "A ring, a promise, and a forever yes under the stars.",
+    title: "PROMISE",
+    description: "Together we promised to walk through every chapter side by side.",
     date: "February 2025",
   },
   {
-    title: "Engagement",
-    description: "Where two families became one.",
+    title: "ENGAGEMENT",
+    description: "A beautiful day that brought our families together and our future closer.",
     date: "May 2026",
   },
   {
-    title: "Wedding",
-    description: "Two souls uniting for a lifetime of love and happiness.",
+    title: "WEDDING DAY",
+    description: "Two souls unite as our story becomes a lifelong journey of love and happiness.",
     date: "July 2026",
   },
 ],
