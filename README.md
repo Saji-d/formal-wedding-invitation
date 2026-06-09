@@ -44,35 +44,6 @@ Traditional invitation cards inspired the elegant design, while modern web techn
 
 ---
 
-## 📸 Preview
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x450/4a0404/D4AF37?text=Hero+Section+Preview" alt="Hero Section Preview" />
-  <br/>
-  <em>Hero Section</em>
-</div>
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x450/4a0404/D4AF37?text=Love+Story+Preview" alt="Love Story Preview" />
-  <br/>
-  <em>Love Story Timeline</em>
-</div>
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x450/4a0404/D4AF37?text=RSVP+Preview" alt="RSVP Preview" />
-  <br/>
-  <em>RSVP Section</em>
-</div>
-
----
-
-## 🌐 Live Preview
-
-Experience the complete invitation exactly as guests see it, including animations, countdowns, timeline interactions, RSVP functionality, and responsive layouts.
-
-[![Experience Live Website](https://img.shields.io/badge/View_Live_Invitation-Click_Here-800020?style=for-the-badge)](https://sajid-weds-dilruba.vercel.app/)
-
----
 
 ## 🛠️ Built With
 
