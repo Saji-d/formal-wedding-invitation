@@ -6,7 +6,7 @@ import { HiHeart } from "react-icons/hi";
 
 export default function Closing() {
   return (
-    <section className="py-24 md:py-32 px-4 bg-[var(--background)] text-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+    <section className="py-24 md:py-32 px-4 bg-[var(--background)] text-center relative overflow-hidden min-h-screen flex flex-col justify-center z-10 border-t border-[var(--color-gold-400)]/5">
       <div className="max-w-4xl mx-auto relative z-10 space-y-12 md:space-y-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}

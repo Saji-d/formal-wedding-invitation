@@ -5,7 +5,7 @@ import { weddingConfig } from "@/config/wedding";
 
 export default function IslamicBlessing() {
   return (
-    <section className="py-24 px-4 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] text-center relative overflow-hidden">
+    <section className="py-32 lg:py-24 px-4 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] text-center relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">

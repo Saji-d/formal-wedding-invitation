@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
+import { HiHeart } from "react-icons/hi";
 
 export default function RSVP() {
   const [name, setName] = useState("");
@@ -24,23 +25,16 @@ export default function RSVP() {
       [weddingConfig.googleForms.rsvp.entries.status]: attending,
     };
 
-    // CRITICAL DIAGNOSTIC LOGS
-    console.log("--- GOOGLE FORM RSVP SUBMISSION ---");
-    console.log("Google form URL:", url);
-    console.log("Submitting form payload:", payload);
-
     const formData = new URLSearchParams();
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value as string);
     });
     
-    // Add required hidden fields for Google Forms
     formData.append("fvv", "1");
     formData.append("pageHistory", "0");
 
     try {
-      // Silent submission to Google Forms
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "POST",
         mode: "no-cors",
         headers: {
@@ -48,14 +42,9 @@ export default function RSVP() {
         },
         body: formData.toString(),
       });
-
-      // NO-CORS means status is 0, but if it doesn't throw, it likely sent.
-      console.log("Response status:", response.status);
-      console.log("Response result:", response);
       
       setIsSubmitted(true);
       
-      // Optional: trigger confetti locally on acceptance
       if (attending === "JOYFULLY ACCEPT") {
         const confetti = (await import("canvas-confetti")).default;
         confetti({
@@ -74,19 +63,19 @@ export default function RSVP() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-[var(--background)]">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-24 lg:py-32 px-4 bg-[var(--background)] border-b border-[var(--color-gold-400)]/10 flex flex-col justify-center min-h-[80vh] lg:min-h-0">
+      <div className="max-w-3xl mx-auto text-center w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mb-8 md:mb-12"
+          className="mb-10 lg:mb-12"
         >
-          <h2 className="text-4xl md:text-6xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4 uppercase tracking-wider">
+          <h2 className="text-4xl lg:text-5xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-3 lg:mb-4 uppercase tracking-wider">
             Will You Join Our Celebration?
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-4 md:mb-6"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-3 lg:mb-4"></div>
           <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400">
             Please let us know if you can make it
           </p>
@@ -99,10 +88,10 @@ export default function RSVP() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass p-6 md:p-12 rounded-3xl space-y-6 md:space-y-8 text-left border border-[var(--color-gold-400)]/20 shadow-xl"
+            className="glass p-6 lg:p-10 rounded-3xl space-y-6 lg:space-y-6 text-left border border-[var(--color-gold-400)]/20 shadow-xl"
           >
             <div>
-              <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+              <label className="block font-cormorant text-xl mb-2 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                 Full Name
               </label>
               <input
@@ -110,13 +99,13 @@ export default function RSVP() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full px-6 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
+                className="w-full px-6 py-3 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
                 placeholder="Enter your full name"
               />
             </div>
 
             <div>
-              <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+              <label className="block font-cormorant text-xl mb-2 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                 Phone Number
               </label>
               <input
@@ -124,23 +113,23 @@ export default function RSVP() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="w-full px-6 py-4 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
+                className="w-full px-6 py-3 bg-white/50 dark:bg-black/50 border border-[var(--color-gold-400)]/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-gold-400)] font-cormorant text-lg"
                 placeholder="e.g. +880 1XXX XXXXXX"
               />
             </div>
 
             <div>
-              <label className="block font-cormorant text-xl mb-3 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+              <label className="block font-cormorant text-xl mb-2 text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
                 Will you attend?
               </label>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
                   onClick={() => setAttending("JOYFULLY ACCEPT")}
-                  className={`flex-1 py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
+                  className={`flex-1 py-3 lg:py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
                     attending === "JOYFULLY ACCEPT"
-                      ? "bg-[var(--color-burgundy-800)] text-[var(--color-champagne)] border-[var(--color-burgundy-800)]"
-                      : "bg-transparent text-[var(--color-burgundy-800)] dark:text-white border-[var(--color-gold-400)] hover:bg-[var(--color-gold-400)]/10"
+                      ? "bg-[var(--color-gold-400)] text-white border-[var(--color-gold-400)] shadow-lg"
+                      : "bg-transparent text-[var(--color-gold-500)] border-[var(--color-gold-400)] hover:bg-[var(--color-gold-400)]/10"
                   }`}
                 >
                   Joyfully Accept
@@ -148,10 +137,10 @@ export default function RSVP() {
                 <button
                   type="button"
                   onClick={() => setAttending("REGRETFULLY DECLINE")}
-                  className={`flex-1 py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
+                  className={`flex-1 py-3 lg:py-4 rounded-xl font-cormorant text-lg tracking-widest uppercase transition-all duration-300 border ${
                     attending === "REGRETFULLY DECLINE"
-                      ? "bg-gray-600 text-white border-gray-600"
-                      : "bg-transparent text-gray-600 dark:text-gray-300 border-gray-400 hover:bg-gray-400/10"
+                      ? "bg-[#B76E79] text-white border-[#B76E79] shadow-lg"
+                      : "bg-transparent text-[#B76E79] border-[#B76E79] hover:bg-[#B76E79]/10"
                   }`}
                 >
                   Regretfully Decline
@@ -162,7 +151,13 @@ export default function RSVP() {
             <button
               type="submit"
               disabled={!name || !attending || !phone || isLoading}
-              className="w-full py-4 bg-[var(--color-gold-400)] text-white rounded-xl hover:bg-[var(--color-gold-500)] transition-colors duration-300 font-cormorant tracking-widest uppercase text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className={`w-full py-4 rounded-xl transition-all duration-300 font-cormorant tracking-widest uppercase text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+                attending === "JOYFULLY ACCEPT"
+                  ? "bg-[#014421] text-white hover:bg-[#013220]"
+                  : attending === "REGRETFULLY DECLINE"
+                  ? "bg-[#B76E79] text-white hover:bg-[#A65D68]"
+                  : "bg-[var(--color-burgundy-800)] text-white hover:bg-[var(--color-burgundy-900)]"
+              }`}
             >
               {isLoading ? (
                 <>
@@ -178,14 +173,31 @@ export default function RSVP() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass p-12 rounded-3xl space-y-6 border border-[var(--color-gold-400)]/20 shadow-2xl"
+            className={`glass p-10 lg:p-12 rounded-3xl space-y-4 lg:space-y-6 border shadow-2xl ${
+              attending === "JOYFULLY ACCEPT"
+                ? "border-[var(--color-gold-400)]/40 bg-[var(--color-champagne)]/20"
+                : "border-[#B76E79]/40 bg-[#B76E79]/5"
+            }`}
           >
-            <h3 className="text-3xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)]">
+            <div className="flex justify-center mb-4">
+              <HiHeart className={`w-12 h-12 ${
+                attending === "JOYFULLY ACCEPT" ? "text-[var(--color-gold-400)]" : "text-[#B76E79]"
+              }`} />
+            </div>
+            <h3 className={`text-3xl font-playfair ${
+              attending === "JOYFULLY ACCEPT" 
+                ? "text-[var(--color-gold-500)]" 
+                : "text-[#B76E79]"
+            }`}>
               {attending === "JOYFULLY ACCEPT" ? "Can't wait to see you!" : "You will be missed!"}
             </h3>
-            <p className="font-cormorant text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className={`font-cormorant text-xl leading-relaxed ${
+              attending === "JOYFULLY ACCEPT"
+                ? "text-gray-700 dark:text-gray-300"
+                : "text-gray-600 dark:text-gray-400"
+            }`}>
               {attending === "JOYFULLY ACCEPT" 
-                ? "Thank you for confirming your attendance. We look forward to celebrating with you. ❤️"
+                ? "Thank you for confirming your attendance. We look forward to celebrating with you."
                 : "Thank you for letting us know. While we'll miss celebrating with you in person, your love, prayers, and blessings mean the world to us. ❤️"}
             </p>
           </motion.div>

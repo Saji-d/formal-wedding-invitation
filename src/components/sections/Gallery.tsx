@@ -15,7 +15,7 @@ export default function Gallery() {
   const images = weddingConfig.gallery;
 
   return (
-    <section className="py-24 px-4 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] overflow-hidden">
+    <section className="py-32 lg:py-24 px-4 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] relative z-10 border-y border-[var(--color-gold-400)]/10">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -30,7 +30,7 @@ export default function Gallery() {
           <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto"></div>
         </motion.div>
 
-        <div className="w-full max-w-[300px] md:max-w-[420px] relative">
+        <div className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[350px] relative px-4 py-10 lg:py-12">
           <Swiper
             modules={[Autoplay, EffectCards, Mousewheel, Keyboard]}
             effect={"cards"}
@@ -55,11 +55,11 @@ export default function Gallery() {
               perSlideOffset: 12,
               perSlideRotate: 2,
             }}
-            className="w-full"
+            className="w-full !overflow-visible"
           >
             {images.map((story, index) => (
-              <SwiperSlide key={index} className="flex flex-col items-center">
-                <div className="bg-white p-3 pb-10 md:p-4 md:pb-14 shadow-2xl rounded-sm border border-gray-100 w-full mb-8">
+              <SwiperSlide key={index} className="flex flex-col items-center !overflow-visible">
+                <div className="bg-white p-3 pb-8 sm:p-4 sm:pb-12 lg:p-4 lg:pb-10 shadow-2xl rounded-sm border border-gray-100 w-full mb-8">
                   <div className="relative aspect-[3/4] w-full overflow-hidden mb-4 md:mb-6 shadow-inner bg-gray-50">
                     <Image
                       src={story.src}
@@ -67,11 +67,11 @@ export default function Gallery() {
                       fill
                       className="object-cover"
                       priority={index === 0}
-                      sizes="(max-width: 768px) 100vw, 420px"
+                      sizes="(max-width: 640px) 300px, (max-width: 1024px) 340px, 350px"
                     />
                   </div>
                   <div className="text-center px-2">
-                    <p className="font-great-vibes text-2xl md:text-3xl text-gray-800">
+                    <p className="font-great-vibes text-2xl md:text-3xl text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">
                       {story.caption}
                     </p>
                   </div>

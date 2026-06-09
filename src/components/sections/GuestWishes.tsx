@@ -64,7 +64,7 @@ export default function GuestWishes() {
   };
 
   return (
-    <section className="py-24 px-4 bg-[var(--background)]">
+    <section className="min-h-screen flex flex-col justify-center py-24 lg:py-32 px-4 bg-[var(--background)] relative z-10">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

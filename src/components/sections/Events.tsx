@@ -8,7 +8,7 @@ export default function Events() {
   const wedding = weddingConfig.events.wedding;
 
   return (
-    <section className="py-24 px-4 bg-[var(--background)] relative overflow-hidden">
+    <section className="py-32 lg:py-24 px-4 bg-[var(--background)] relative overflow-hidden z-10 border-t border-[var(--color-gold-400)]/5">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

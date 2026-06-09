@@ -15,16 +15,6 @@ export default function BackgroundEffects() {
 
       const petalCount = 45;
       
-      // We want petals to fall through the entire document
-      const docHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight
-      );
-
       for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement("div");
         petal.className = "petal";
@@ -70,15 +60,9 @@ export default function BackgroundEffects() {
 
   return (
     <>
-      {/* Global Petal Layer - Fixed to viewport but container is full height */}
-      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
+      {/* Global Petal Layer - Fixed to viewport */}
+      <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
         <div ref={containerRef} className="absolute inset-0" />
-      </div>
-
-      {/* Persistent Ambient Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--color-gold-400)] opacity-5 blur-[120px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--color-rosegold)] opacity-5 blur-[120px] rounded-full mix-blend-screen" />
       </div>
 
       <style jsx global>{`

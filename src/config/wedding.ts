@@ -70,67 +70,67 @@ export const weddingConfig = {
   gallery: [
     {
       src: "/images/gallery/hero.jpeg",
-      caption: "Our Forever Begins ❤️"
+      caption: "Forever Starts Here"
     },
     {
       src: "/images/gallery/1.jpeg",
-      caption: "Where it all began ❤️"
+      caption: "A Quiet Promise"
     },
     {
       src: "/images/gallery/2.jpeg",
-      caption: "Our favorite memory"
+      caption: "Every Smile Tells A Story"
     },
     {
       src: "/images/gallery/3.jpeg",
-      caption: "Hand in hand, heart to heart"
+      caption: "Hand In Hand"
     },
     {
       src: "/images/gallery/4.jpeg",
-      caption: "Laughter and Joy"
+      caption: "Laughter In Our Souls"
     },
     {
       src: "/images/gallery/5.jpeg",
-      caption: "Moments of Serenity"
+      caption: "In Your Eyes, I Found Home"
     },
     {
       src: "/images/gallery/6.jpeg",
-      caption: "Forever starts here"
+      caption: "Where Forever Felt Easy"
     },
     {
       src: "/images/gallery/7.jpeg",
-      caption: "Sweetest Moments"
+      caption: "A Thousand Words"
     },
     {
       src: "/images/gallery/8.jpeg",
-      caption: "Love in every frame"
+      caption: "Wrapped In Love"
     },
     {
       src: "/images/gallery/9.jpeg",
-      caption: "Together is our favorite place"
+      caption: "Our Favorite Place"
     },
     {
       src: "/images/gallery/10.jpeg",
-      caption: "Beautiful Journey"
+      caption: "Timeless Love"
     },
     {
       src: "/images/gallery/11.jpeg",
-      caption: "Cherished Memories"
+      caption: "Our Beautiful Melody"
     },
     {
       src: "/images/gallery/12.jpeg",
-      caption: "Golden Hour"
+      caption: "Golden Memories"
     },
     {
       src: "/images/gallery/13.jpeg",
-      caption: "Pure Happiness"
+      caption: "Purely Us"
     },
     {
       src: "/images/gallery/14.PNG",
-      caption: "Capturing Love"
+      caption: "Capturing Magic"
     },
     {
       src: "/images/gallery/15.jpeg",
-      caption: "Our Story Continues"
+      caption: "Growing Together"
     },
   ],
   islamicBlessing: {
