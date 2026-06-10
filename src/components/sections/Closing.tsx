@@ -41,15 +41,15 @@ export default function Closing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-col items-center gap-1 md:hidden"
+          className="flex flex-col items-center gap-1 md:hidden scale-[0.95] origin-center"
         >
-          <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-normal px-4">
+          <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-[1.1] px-4">
             {weddingConfig.couple.displayName1}
           </h2>
           <span className="text-6xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-none my-2">
             &
           </span>
-          <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-normal px-4">
+          <h2 className="text-8xl font-great-vibes text-[var(--color-gold-500)] drop-shadow-sm leading-[1.1] px-4">
             {weddingConfig.couple.displayName2}
           </h2>
         </motion.div>
@@ -72,7 +72,7 @@ export default function Closing() {
           transition={{ duration: 1, delay: 0.9 }}
           className="pt-6 md:pt-10"
         >
-          <div className="inline-flex flex-col items-center px-6 md:px-16 py-6 md:py-8 border-y border-[var(--color-gold-400)]/30 relative group space-y-2 md:space-y-3">
+          <div className="inline-flex flex-col items-center px-6 md:px-16 py-6 md:py-8 border-y border-[var(--color-gold-400)]/30 relative group space-y-2 md:space-y-3 scale-[0.95] md:scale-100 origin-center">
             {/* Subtle glow effect */}
             <div className="absolute inset-0 bg-[var(--color-gold-400)]/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
             
