@@ -69,8 +69,8 @@ To run the project locally on your machine:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/luxury-wedding.git
-   cd luxury-wedding
+   git clone https://github.com/Saji-d/my-wedding-invitation.git
+   cd my-wedding-invitation
    ```
 
 2. **Install dependencies:**
