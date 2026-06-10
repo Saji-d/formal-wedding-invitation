@@ -31,12 +31,12 @@ export default function LoveStory() {
           {weddingConfig.timeline.map((item, index) => {
             const isEven = index % 2 === 0;
             const timelineImages = [
-              "/images/love_story/our_beginning.jpeg",
-              "/images/love_story/friendship.PNG",
-              "/images/love_story/love.jpeg",
-              "/images/love_story/promise.PNG",
-              "/images/love_story/engagement.PNG",
-              "/images/love_story/wedding.PNG"
+              "/images/love_story/our_beginning.webp",
+              "/images/love_story/friendship.webp",
+              "/images/love_story/love.webp",
+              "/images/love_story/promise.webp",
+              "/images/love_story/engagement.webp",
+              "/images/love_story/wedding.webp",
             ];
             
             return (
@@ -54,7 +54,7 @@ export default function LoveStory() {
                 <div className="w-[42%] px-2 md:px-6">
                   <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl border border-[var(--color-gold-400)]/20">
                     <Image
-                      src={timelineImages[index] || "/images/gallery/hero.jpeg"}
+                      src={timelineImages[index] || "/images/gallery/hero.webp"}
                       alt={item.title}
                       fill
                       className="object-cover object-center"

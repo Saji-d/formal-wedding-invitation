@@ -79,8 +79,8 @@ export default function Closing() {
             <p className="font-playfair text-lg md:text-xl tracking-[0.4em] text-[var(--color-gold-500)] mb-2 md:mb-4 uppercase">
                 Friday
             </p>
-            <p className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[0.15em] pl-[0.15em] bg-gradient-to-b from-[#F7E7CE] via-[#D4AF37] to-[#AA7C11] bg-clip-text text-transparent drop-shadow-sm whitespace-nowrap">
-                17<span className="inline-block align-top text-[0.45em] ml-[0.05em] mr-[0.05em] font-bold">TH</span> JULY 2026
+            <p className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[0.15em] text-[#D4AF37] drop-shadow-[0_2px_12px_rgba(212,175,55,0.3)] whitespace-nowrap">
+              17<sup className="text-[0.45em] font-bold lowercase">th</sup> JULY 2026
             </p>
           </div>
         </motion.div>

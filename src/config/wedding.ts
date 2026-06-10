@@ -69,67 +69,67 @@ export const weddingConfig = {
   ],
   gallery: [
     {
-      src: "/images/gallery/hero.jpeg",
+      src: "/images/gallery/hero.webp",
       caption: "Our Next Chapter"
     },
     {
-      src: "/images/gallery/1.jpeg",
+      src: "/images/gallery/1.webp",
       caption: "Forever Starts With You"
     },
     {
-      src: "/images/gallery/2.jpeg",
+      src: "/images/gallery/2.webp",
       caption: "My Heart Found Home"
     },
     {
-      src: "/images/gallery/3.jpeg",
+      src: "/images/gallery/3.webp",
       caption: "You Are My Always"
     },
     {
-      src: "/images/gallery/4.jpeg",
+      src: "/images/gallery/4.webp",
       caption: "Love Beyond Horizons"
     },
     {
-      src: "/images/gallery/5.jpeg",
+      src: "/images/gallery/5.webp",
       caption: "Lost In Your Eyes"
     },
     {
-      src: "/images/gallery/6.jpeg",
+      src: "/images/gallery/6.webp",
       caption: "My Everyday Favorite"
     },
     {
-      src: "/images/gallery/7.jpeg",
+      src: "/images/gallery/7.webp",
       caption: "Every Step With You"
     },
     {
-      src: "/images/gallery/8.jpeg",
+      src: "/images/gallery/8.webp",
       caption: "Life Looks Better"
     },
     {
-      src: "/images/gallery/9.jpeg",
+      src: "/images/gallery/9.webp",
       caption: "Our Little World"
     },
     {
-      src: "/images/gallery/10.jpeg",
+      src: "/images/gallery/10.webp",
       caption: "My Better Half"
     },
     {
-      src: "/images/gallery/11.PNG",
+      src: "/images/gallery/11.webp",
       caption: "Falling For You Still"
     },
     {
-      src: "/images/gallery/12.jpeg",
+      src: "/images/gallery/12.webp",
       caption: "Quietly In Love"
     },
     {
-      src: "/images/gallery/13.jpeg",
+      src: "/images/gallery/13.webp",
       caption: "Dancing Into Forever"
     },
     {
-      src: "/images/gallery/14.jpeg",
+      src: "/images/gallery/14.webp",
       caption: "You Light Me Up"
     },
     {
-      src: "/images/gallery/15.jpeg",
+      src: "/images/gallery/15.webp",
       caption: "My Answer Is You"
     },
   ],

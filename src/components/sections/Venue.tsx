@@ -80,7 +80,7 @@ export default function Venue() {
           >
             <div className="relative w-full lg:w-[85%] aspect-[4/3] lg:aspect-square rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-[var(--color-gold-400)]/20 group">
               <Image
-                src="/images/gallery/meghboroni.jpeg"
+                src="/images/gallery/meghboroni.webp"
                 alt="Venue"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"

@@ -13,7 +13,7 @@ export default function Hero() {
         {/* Desktop Blurred Background for "Side Fill" - used to avoid harsh black bars if aspect ratio is extreme */}
         <div className="absolute inset-0 hidden lg:block">
           <Image
-            src="/images/gallery/hero.jpeg"
+            src="/images/gallery/hero.webp"
             alt="Wedding Hero Background"
             fill
             className="object-cover blur-3xl opacity-30 scale-110"
@@ -23,7 +23,7 @@ export default function Hero() {
         
         {/* Main Hero Image - Using object-cover with tuned position for desktop to show the couple properly */}
         <Image
-          src="/images/gallery/hero.jpeg"
+          src="/images/gallery/hero.webp"
           alt="Wedding Hero"
           fill
           className="object-cover brightness-[0.85] contrast-[1.1] object-center lg:object-[center_40%]"
