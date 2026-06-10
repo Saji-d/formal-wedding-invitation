@@ -24,10 +24,10 @@ export default function Gallery() {
           transition={{ duration: 1 }}
           className="text-center mb-12 lg:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
+          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
             Moments Captured
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto"></div>
         </motion.div>
 
         <div className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[350px] relative py-10 lg:py-12 lg:scale-[0.9] origin-center">
@@ -59,8 +59,11 @@ export default function Gallery() {
           >
             {images.map((story, index) => (
               <SwiperSlide key={index} className="flex flex-col items-center !overflow-visible">
-                <div className="bg-white p-3 pb-4 sm:p-4 sm:pb-5 lg:p-4 lg:pb-6 shadow-2xl rounded-sm border border-gray-100 w-full mb-8">
-                  <div className="relative aspect-[3/4] w-full overflow-hidden mb-3 md:mb-4 shadow-inner bg-gray-50">
+                <div className="bg-[#1A1A1A] p-3 pb-4 sm:p-4 sm:pb-5 lg:p-4 lg:pb-6 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] rounded-sm border border-[#D4AF37]/20 w-full mb-8 relative">
+                  {/* Subtle edge highlight for luxury album feel */}
+                  <div className="absolute inset-0 border-t border-l border-white/5 rounded-sm pointer-events-none"></div>
+                  
+                  <div className="relative aspect-[3/4] w-full overflow-hidden mb-3 md:mb-4 shadow-inner bg-black/40 border border-[#D4AF37]/10">
                     <Image
                       src={story.src}
                       alt={story.caption}
@@ -71,7 +74,7 @@ export default function Gallery() {
                     />
                   </div>
                   <div className="text-center px-2">
-                    <p className="font-great-vibes text-2xl md:text-3xl text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">
+                    <p className="font-great-vibes text-2xl md:text-3xl text-[#F7E7CE] whitespace-nowrap overflow-hidden text-ellipsis">
                       {story.caption}
                     </p>
                   </div>
