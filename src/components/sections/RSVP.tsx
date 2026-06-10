@@ -152,23 +152,23 @@ export default function RSVP() {
               type="submit"
               disabled={!name || !attending || !phone || isLoading}
               className={`w-full py-4 rounded-xl transition-all duration-500 font-cormorant tracking-widest uppercase text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 relative overflow-hidden group hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(212,175,55,0.3)] ${
-                !attending ? "bg-[var(--color-burgundy-800)] text-[var(--color-champagne)] shadow-lg" : "text-white shadow-[0_4px_15px_rgba(212,175,55,0.2)]"
+                !attending ? "text-[var(--color-champagne)] shadow-lg" : "text-white shadow-[0_4px_15px_rgba(212,175,55,0.2)]"
               }`}
             >
               {/* Luxury Animated Shimmer Border Background */}
-              {attending && !isLoading && (
+              {(!attending || (attending && !isLoading)) && (
                 <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,#D4AF37_0%,#F3C4CF_25%,#800020_50%,#D4AF37_75%,#F3C4CF_100%)] bg-[length:200%_200%] animate-luxury-shimmer"></div>
               )}
               
               {/* Inner mask to provide background color and keep border glow */}
-              {attending && !isLoading && (
+              {(!attending || (attending && !isLoading)) && (
                 <div className={`absolute inset-[2px] rounded-[10px] z-10 transition-colors duration-500 ${
                   attending === "REGRETFULLY DECLINE" ? "bg-[#8B0000] group-hover:bg-[#7a0000]" : "bg-[#014421] group-hover:bg-[#013220]"
                 }`}></div>
               )}
 
               {/* Light Sweep Effect */}
-              {attending && !isLoading && (
+              {(!attending || (attending && !isLoading)) && (
                 <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 animate-light-sweep pointer-events-none"></div>
               )}
 

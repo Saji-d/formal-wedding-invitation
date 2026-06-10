@@ -71,7 +71,7 @@ export default function GuestWishes() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-16 md:mb-10"
         >
           <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
             Guest Book

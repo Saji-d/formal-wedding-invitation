@@ -39,7 +39,7 @@ export default function Gallery() {
             slidesPerView={1}
             loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 2000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
