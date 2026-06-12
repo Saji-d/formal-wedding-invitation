@@ -15,7 +15,7 @@ export const weddingConfig = {
   },
   venue: {
     name: "Bilash Bhaban Community Center",
-    nameBn: "বিলাস ভবন কমিনিউটি সেন্টার",
+    nameBn: "বিলাস ভবন কমিউনিটি সেন্টার",
     address: "House 6, Road 5, Block A, Mirpur, Dhaka 1216",
     googleMapsUrl: "https://maps.app.goo.gl/sR5XnHehZfHLMUv2A?g_st=iw",
     coordinates: {

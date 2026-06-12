@@ -62,18 +62,28 @@ export default function Venue() {
               </p>
             </div>
             
-            <div className="font-cormorant text-base lg:text-lg text-gray-600 dark:text-gray-400 space-y-4">
-              <p>We can't wait to celebrate with you at this beautiful location.</p>
-              <p>Ample parking is available for all guests.</p>
+            <div className="font-cormorant text-base lg:text-lg space-y-4">
+              <p className="text-[var(--color-champagne)] opacity-100 font-medium tracking-wide">
+                We can't wait to celebrate with you at this beautiful location.
+              </p>
+              <p className="text-[var(--color-gold-400)]/90 font-medium tracking-wide">
+                Ample parking is available for all guests.
+              </p>
             </div>
 
-            <button
+            <motion.button
               onClick={openDirections}
-              className="inline-flex items-center gap-2 px-6 lg:px-8 py-3 bg-[var(--color-burgundy-800)] text-[var(--color-champagne)] rounded-full hover:bg-[var(--color-burgundy-900)] transition-colors duration-300 font-cormorant tracking-widest uppercase text-xs lg:text-sm shadow-xl"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative inline-flex items-center gap-3 px-8 lg:px-10 py-4 bg-[var(--color-burgundy-800)] text-[var(--color-champagne)] rounded-full transition-all duration-500 font-cormorant tracking-[0.2em] uppercase text-xs lg:text-sm shadow-[0_10px_30px_rgba(128,0,32,0.3)] group overflow-hidden border border-[var(--color-gold-400)]/30 hover:border-[var(--color-gold-500)]"
             >
-              <HiOutlineMap className="w-4 h-4 lg:w-5 lg:h-5" />
-              Get Directions
-            </button>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-gold-400)]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <HiOutlineMap className="w-4 h-4 lg:w-5 lg:h-5 text-[var(--color-gold-400)] group-hover:text-[var(--color-gold-300)] transition-colors" />
+              <span className="relative z-10 group-hover:text-[var(--color-ivory)] transition-colors">Get Directions</span>
+              
+              {/* Subtle Animated Border Glow */}
+              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_20px_rgba(212,175,55,0.2)]" />
+            </motion.button>
           </motion.div>
 
           <motion.div

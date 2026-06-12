@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
-import { HiOutlineClock, HiOutlineLocationMarker, HiOutlineCalendar } from "react-icons/hi";
+import { HiOutlineClock, HiOutlineCalendar } from "react-icons/hi";
+import { GiCastle } from "react-icons/gi";
 
 export default function Events() {
   const wedding = weddingConfig.events.wedding;
@@ -26,18 +27,47 @@ export default function Events() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center mb-8 opacity-90">
-          <svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 20 Q 60 20, 105 20 T 115 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
-            <path d="M220 20 Q 180 20, 135 20 T 125 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
-            {/* Center diamond/flower */}
-            <path d="M120 5 L125 15 L135 20 L125 25 L120 35 L115 25 L105 20 L115 15 Z" fill="var(--color-gold-400)" opacity="0.8"/>
-            {/* Flourishes */}
-            <path d="M90 20 Q 100 10, 105 20" stroke="var(--color-gold-400)" strokeWidth="1" fill="none"/>
-            <path d="M150 20 Q 140 30, 135 20" stroke="var(--color-gold-400)" strokeWidth="1" fill="none"/>
-            <circle cx="120" cy="20" r="3" fill="var(--background)" />
-          </svg>
-        </div>
+        <motion.div 
+          className="flex justify-center mb-8 relative"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          {/* Luxury Ornament */}
+          <div className="relative group">
+            <svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">
+              {/* Central Ornamental Element */}
+              <motion.path 
+                d="M150 10 L155 25 L170 30 L155 35 L150 50 L145 35 L130 30 L145 25 Z" 
+                fill="url(#goldGradient)"
+                animate={{ 
+                  filter: ["brightness(1)", "brightness(1.5)", "brightness(1)"],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Decorative Swirls */}
+              <path d="M120 30 Q 80 30, 40 30 T 10 30" stroke="url(#goldGradient)" strokeWidth="1" opacity="0.6"/>
+              <path d="M180 30 Q 220 30, 260 30 T 290 30" stroke="url(#goldGradient)" strokeWidth="1" opacity="0.6"/>
+              <path d="M135 30 Q 140 20, 150 20 T 165 30" stroke="url(#goldGradient)" strokeWidth="1.5" opacity="0.8"/>
+              <path d="M135 30 Q 140 40, 150 40 T 165 30" stroke="url(#goldGradient)" strokeWidth="1.5" opacity="0.8"/>
+              
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#AA7C11" />
+                  <stop offset="50%" stopColor="#D4AF37" />
+                  <stop offset="100%" stopColor="#AA7C11" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full"
+              animate={{ x: ['-100%', '200%'] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+            />
+          </div>
+        </motion.div>
 
         <div className="flex justify-center">
             <motion.div
@@ -63,14 +93,30 @@ export default function Events() {
                   <span>1:30 PM onwards</span>
                 </div>
 
-                <div className="flex items-center gap-4 text-lg md:text-xl font-cormorant text-gray-700 dark:text-gray-300 max-w-md mt-2">
-                  <HiOutlineLocationMarker className="text-[var(--color-gold-500)] w-6 h-6 flex-shrink-0" />
-                  <span>{weddingConfig.venue.name}<br /><span className="text-sm opacity-80">({(weddingConfig.venue as any).nameBn})</span><br />{weddingConfig.venue.address}</span>
+                <div className="flex flex-col items-center max-w-md mt-6">
+                  <motion.div 
+                    className="mb-4 text-[var(--color-gold-500)]"
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <GiCastle className="w-10 h-10 md:w-12 md:h-12 drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]" />
+                  </motion.div>
+                  <div className="mb-2">
+                    <span className="text-xl md:text-2xl font-playfair font-medium text-gray-800 dark:text-[var(--color-champagne)] block">
+                      {weddingConfig.venue.name}
+                    </span>
+                    <span className="text-base md:text-lg font-playfair text-gray-600 dark:text-[var(--color-champagne)]/70 block mt-1">
+                      ({(weddingConfig.venue as any).nameBn})
+                    </span>
+                  </div>
+                  <span className="text-sm md:text-base font-cormorant text-gray-500 dark:text-gray-400 tracking-wide">
+                    House 6, Road 5, Block A, Mirpur, Dhaka 1216
+                  </span>
                 </div>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[var(--color-gold-400)]/20">
-                <p className="font-playfair italic text-[var(--color-gold-500)]">
+                <p className="font-playfair italic text-[var(--color-gold-500)] text-lg">
                   Lunch will be served following the ceremony (2:00 PM)
                 </p>
               </div>
