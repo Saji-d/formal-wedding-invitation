@@ -28,7 +28,8 @@ export default function Hero() {
           fill
           className="object-cover brightness-[0.85] contrast-[1.1] object-center lg:object-[center_40%]"
           priority
-          quality={100}
+          quality={85}
+          sizes="100vw"
         />
         {/* Elegant Overlay */}
         <div 

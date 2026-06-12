@@ -58,6 +58,7 @@ export default function LoveStory() {
                       alt={item.title}
                       fill
                       className="object-cover object-center"
+                      sizes="(max-width: 768px) 42vw, 30vw"
                     />
                   </div>
                 </div>

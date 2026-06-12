@@ -8,14 +8,14 @@ export default function Events() {
   const wedding = weddingConfig.events.wedding;
 
   return (
-    <section className="py-32 lg:py-24 px-4 bg-[var(--background)] relative overflow-hidden z-10 border-t border-[var(--color-gold-400)]/5">
+    <section className="py-20 lg:py-16 px-4 bg-[var(--background)] relative overflow-hidden z-10 border-t border-[var(--color-gold-400)]/5">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
             The Celebration
@@ -26,7 +26,7 @@ export default function Events() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center mb-12 opacity-90">
+        <div className="flex justify-center mb-8 opacity-90">
           <svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 20 Q 60 20, 105 20 T 115 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
             <path d="M220 20 Q 180 20, 135 20 T 125 20" stroke="var(--color-gold-400)" strokeWidth="1.5" fill="none"/>
@@ -44,15 +44,15 @@ export default function Events() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="w-full max-w-2xl glass p-8 md:p-12 rounded-3xl border border-[var(--color-gold-400)]/20 shadow-2xl relative group overflow-hidden text-center"
+              className="w-full max-w-2xl glass p-6 md:p-10 rounded-3xl border border-[var(--color-gold-400)]/20 shadow-2xl relative group overflow-hidden text-center"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-gold-400)] opacity-5 blur-3xl -mr-16 -mt-16 group-hover:opacity-10 transition-opacity" />
               
-              <h3 className="text-4xl md:text-5xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-8">
+              <h3 className="text-3xl md:text-4xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-6">
                 {wedding.name}
               </h3>
 
-              <div className="space-y-6 flex flex-col items-center">
+              <div className="space-y-4 flex flex-col items-center">
                 <div className="flex items-center gap-4 text-xl md:text-2xl font-playfair font-medium tracking-wide text-gray-700 dark:text-gray-300">
                   <HiOutlineCalendar className="text-[var(--color-gold-500)] w-6 h-6" />
                   <span>{wedding.displayDate}</span>
@@ -60,18 +60,18 @@ export default function Events() {
                 
                 <div className="flex items-center gap-4 text-xl md:text-2xl font-playfair font-medium tracking-wide text-gray-700 dark:text-gray-300">
                   <HiOutlineClock className="text-[var(--color-gold-500)] w-6 h-6" />
-                  <span>7:00 PM onwards</span>
+                  <span>1:30 PM onwards</span>
                 </div>
 
                 <div className="flex items-center gap-4 text-lg md:text-xl font-cormorant text-gray-700 dark:text-gray-300 max-w-md mt-2">
                   <HiOutlineLocationMarker className="text-[var(--color-gold-500)] w-6 h-6 flex-shrink-0" />
-                  <span>{weddingConfig.venue.name}<br />{weddingConfig.venue.address}</span>
+                  <span>{weddingConfig.venue.name}<br /><span className="text-sm opacity-80">({(weddingConfig.venue as any).nameBn})</span><br />{weddingConfig.venue.address}</span>
                 </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-[var(--color-gold-400)]/20">
+              <div className="mt-8 pt-6 border-t border-[var(--color-gold-400)]/20">
                 <p className="font-playfair italic text-[var(--color-gold-500)]">
-                  Dinner will be served following the ceremony
+                  Lunch will be served following the ceremony (2:00 PM)
                 </p>
               </div>
             </motion.div>

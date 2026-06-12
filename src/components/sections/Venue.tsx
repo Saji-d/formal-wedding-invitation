@@ -48,9 +48,14 @@ export default function Venue() {
             className="space-y-6 lg:space-y-8 text-center lg:text-left order-1 lg:order-1"
           >
             <div>
-              <h3 className="text-2xl lg:text-4xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] mb-3">
-                {weddingConfig.venue.name}
-              </h3>
+              <div className="mb-4">
+                <h3 className="text-2xl lg:text-3xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] leading-tight">
+                  {weddingConfig.venue.name}
+                </h3>
+                <p className="text-lg lg:text-2xl font-playfair text-[var(--color-burgundy-800)]/70 dark:text-[var(--color-champagne)]/70 mt-1">
+                  ({(weddingConfig.venue as any).nameBn})
+                </p>
+              </div>
               <p className="font-cormorant text-lg lg:text-xl text-gray-700 dark:text-gray-300 flex items-center justify-center lg:justify-start gap-2">
                 <HiOutlineLocationMarker className="text-[var(--color-gold-500)] flex-shrink-0" />
                 <span>{weddingConfig.venue.address}</span>
@@ -80,10 +85,11 @@ export default function Venue() {
           >
             <div className="relative w-full lg:w-[85%] aspect-[4/3] lg:aspect-square rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-[var(--color-gold-400)]/20 group">
               <Image
-                src="/images/gallery/meghboroni.webp"
+                src="/images/gallery/BilashBhaban.webp"
                 alt="Venue"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 1024px) 100vw, 40vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                 <p className="text-[var(--color-ivory)] font-playfair text-xl">{weddingConfig.venue.name}</p>

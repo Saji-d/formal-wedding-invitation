@@ -9,14 +9,15 @@ export const weddingConfig = {
   events: {
     wedding: {
       name: "Wedding Ceremony",
-      date: "2026-07-17T19:00:00",
+      date: "2026-07-17T14:00:00",
       displayDate: "Friday, 17 July 2026",
     },
   },
   venue: {
-    name: "Meghboroni (মেঘবরণী)",
-    address: "Road 15, Dhaka 1216, Bangladesh",
-    googleMapsUrl: "https://www.google.com/maps/dir//Meghboroni+(%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%AC%E0%A6%B0%E0%A6%A3%E0%A7%80),+Rd+15,+Dhaka+1216/@23.8130301,90.3750825,17z",
+    name: "Bilash Bhaban Community Center",
+    nameBn: "বিলাস ভবন কমিনিউটি সেন্টার",
+    address: "House 6, Road 5, Block A, Mirpur, Dhaka 1216",
+    googleMapsUrl: "https://maps.app.goo.gl/sR5XnHehZfHLMUv2A?g_st=iw",
     coordinates: {
       lat: 23.8130301,
       lng: 90.3750825,
