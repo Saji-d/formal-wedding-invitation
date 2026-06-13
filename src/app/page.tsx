@@ -9,11 +9,9 @@ import LoveStory from "@/components/sections/LoveStory";
 import Events from "@/components/sections/Events";
 import Countdown from "@/components/sections/Countdown";
 import Venue from "@/components/sections/Venue";
-import Gallery from "@/components/sections/Gallery";
-import ScratchCard from "@/components/sections/ScratchCard";
-import GuestWishes from "@/components/sections/GuestWishes";
 import RSVP from "@/components/sections/RSVP";
 import IslamicBlessing from "@/components/sections/IslamicBlessing";
+import Quotes from "@/components/sections/Quotes";
 import Closing from "@/components/sections/Closing";
 import { HiArrowUp } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
@@ -55,14 +53,12 @@ export default function Home() {
           
           <Hero />
           <IslamicBlessing />
-          <ScratchCard />
           <Countdown />
           <LoveStory />
-          <Gallery />
           <Events />
           <Venue />
           <RSVP />
-          <GuestWishes />
+          <Quotes />
           
           <div ref={lastSectionRef}>
             <Closing />

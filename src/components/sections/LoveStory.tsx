@@ -6,8 +6,6 @@ import { HiHeart } from "react-icons/hi";
 import Image from "next/image";
 
 export default function LoveStory() {
-  const images = weddingConfig.gallery.slice(1, 7); // Using first 6 gallery images
-
   return (
     <section className="py-24 px-4 relative bg-[var(--background)] z-10 border-t border-[var(--color-gold-400)]/5">
       <div className="max-w-5xl mx-auto">
@@ -19,7 +17,7 @@ export default function LoveStory() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
-            Our Love Story
+            Wedding Milestones
           </h2>
           <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto"></div>
         </motion.div>
@@ -31,10 +29,6 @@ export default function LoveStory() {
           {weddingConfig.timeline.map((item, index) => {
             const isEven = index % 2 === 0;
             const timelineImages = [
-              "/images/love_story/our_beginning.webp",
-              "/images/love_story/friendship.webp",
-              "/images/love_story/love.webp",
-              "/images/love_story/promise.webp",
               "/images/love_story/engagement.webp",
               "/images/love_story/wedding.webp",
             ];

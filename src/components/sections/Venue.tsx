@@ -49,7 +49,7 @@ export default function Venue() {
           >
             <div>
               <div className="mb-4">
-                <h3 className="text-[1.6rem] sm:text-[1.75rem] lg:text-3xl font-playfair font-bold text-[var(--color-champagne)] leading-tight whitespace-nowrap lg:whitespace-normal">
+                <h3 className="text-[1.5rem] sm:text-[1.75rem] lg:text-3xl font-playfair font-bold text-[var(--color-champagne)] leading-tight whitespace-nowrap lg:whitespace-normal">
                   {weddingConfig.venue.name}
                 </h3>
                 <p className="text-base lg:text-lg font-playfair text-[var(--color-champagne)] mt-2">
