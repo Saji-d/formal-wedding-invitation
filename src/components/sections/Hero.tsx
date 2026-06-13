@@ -10,32 +10,21 @@ export default function Hero() {
     <section className="relative h-screen lg:h-[110vh] flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
-        {/* Desktop Blurred Background for "Side Fill" - used to avoid harsh black bars if aspect ratio is extreme */}
-        <div className="absolute inset-0 hidden lg:block">
-          <Image
-            src="/images/gallery/hero.webp"
-            alt="Wedding Hero Background"
-            fill
-            className="object-cover blur-3xl opacity-30 scale-110"
-            priority
-          />
-        </div>
-        
-        {/* Main Hero Image - Using object-cover with tuned position for desktop to show the couple properly */}
+        {/* Main Hero Image - Using a formal luxury wedding background */}
         <Image
-          src="/images/gallery/hero.webp"
-          alt="Wedding Hero"
+          src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=2070&auto=format&fit=crop"
+          alt="Luxury Wedding Backdrop"
           fill
-          className="object-cover brightness-[0.85] contrast-[1.1] object-center lg:object-[center_40%]"
+          className="object-cover brightness-[0.7] contrast-[1.1]"
           priority
-          quality={85}
+          quality={90}
           sizes="100vw"
         />
-        {/* Elegant Overlay */}
+        {/* Elegant Dark Overlay for better text readability */}
         <div 
           className="absolute inset-0 z-10" 
           style={{ 
-            background: "linear-gradient(rgba(0,0,0,0.40), rgba(0,0,0,0.55))" 
+            background: "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.70))" 
           }}
         ></div>
       </div>

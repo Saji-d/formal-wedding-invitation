@@ -5,13 +5,15 @@ import OpeningScreen from "@/components/sections/OpeningScreen";
 import BackgroundEffects from "@/components/layout/BackgroundEffects";
 import MusicPlayer from "@/components/ui/MusicPlayer";
 import Hero from "@/components/sections/Hero";
+import Quotes from "@/components/sections/Quotes";
+import IslamicBlessing from "@/components/sections/IslamicBlessing";
+import ScratchCard from "@/components/sections/ScratchCard";
+import Countdown from "@/components/sections/Countdown";
 import LoveStory from "@/components/sections/LoveStory";
 import Events from "@/components/sections/Events";
-import Countdown from "@/components/sections/Countdown";
 import Venue from "@/components/sections/Venue";
 import RSVP from "@/components/sections/RSVP";
-import IslamicBlessing from "@/components/sections/IslamicBlessing";
-import Quotes from "@/components/sections/Quotes";
+import GuestWishes from "@/components/sections/GuestWishes";
 import Closing from "@/components/sections/Closing";
 import { HiArrowUp } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
@@ -52,13 +54,15 @@ export default function Home() {
           <BackgroundEffects />
           
           <Hero />
+          <Quotes />
           <IslamicBlessing />
+          <ScratchCard />
           <Countdown />
           <LoveStory />
           <Events />
           <Venue />
           <RSVP />
-          <Quotes />
+          <GuestWishes />
           
           <div ref={lastSectionRef}>
             <Closing />

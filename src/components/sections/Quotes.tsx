@@ -11,33 +11,47 @@ export default function Quotes() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % weddingConfig.quotes.length);
-    }, 5000);
+    }, 6000); // 6 second rotation for elegant reading pace
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-[var(--color-burgundy-900)] text-[var(--color-champagne)]">
+    <section className="py-12 md:py-16 relative overflow-hidden bg-[var(--color-burgundy-900)] text-[var(--color-champagne)] border-y border-[var(--color-gold-400)]/10">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
       
-      <div className="max-w-3xl mx-auto relative z-10 text-center min-h-[300px] flex flex-col justify-center items-center">
-        <ImQuotesLeft className="text-4xl md:text-6xl text-[var(--color-gold-400)] opacity-50 mb-8" />
+      {/* 
+          STABILIZED LAYOUT CONTAINER
+          Fixed height ensures the section never jumps or resizes during transitions.
+          Reserve enough space for the longest formal quotes.
+      */}
+      <div className="max-w-4xl mx-auto relative z-10 text-center h-[280px] md:h-[220px] flex flex-col items-center justify-center">
         
-        <div className="relative w-full h-32 md:h-40">
+        {/* Fixed Position Top Quotation Mark */}
+        <div className="h-10 md:h-12 flex items-center justify-center shrink-0">
+          <ImQuotesLeft className="text-3xl md:text-5xl text-[var(--color-gold-400)] opacity-50" />
+        </div>
+        
+        {/* Fixed Height Quote Content Area - Vertically Centered */}
+        <div className="relative w-full flex-grow flex items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.p
               key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl md:text-4xl font-playfair italic absolute w-full inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 flex items-center justify-center text-xl md:text-3xl font-playfair italic leading-relaxed text-[var(--color-ivory)] drop-shadow-sm px-6 md:px-12"
             >
-              "{weddingConfig.quotes[currentIndex]}"
+              {weddingConfig.quotes[currentIndex]}
             </motion.p>
           </AnimatePresence>
         </div>
 
-        <ImQuotesRight className="text-4xl md:text-6xl text-[var(--color-gold-400)] opacity-50 mt-8" />
+        {/* Fixed Position Bottom Quotation Mark */}
+        <div className="h-10 md:h-12 flex items-center justify-center shrink-0">
+          <ImQuotesRight className="text-3xl md:text-5xl text-[var(--color-gold-400)] opacity-50" />
+        </div>
+        
       </div>
     </section>
   );

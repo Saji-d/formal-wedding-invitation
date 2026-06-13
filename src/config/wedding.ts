@@ -44,9 +44,12 @@ export const weddingConfig = {
     number: "8801954832959",
   },
   quotes: [
-    "I have found the one whom my soul loves.",
-    "Two souls but with a single thought, two hearts that beat as one.",
+    "May this union be blessed with love, peace, and lifelong companionship.",
+    "Together is a beautiful place to be.",
+    "Two hearts, one journey, a lifetime of memories.",
     "A successful marriage requires falling in love many times, always with the same person.",
+    "Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.",
+    "And among His signs is that He created for you spouses that you may find tranquility in them.",
   ],
   gallery: [],
   islamicBlessing: {
