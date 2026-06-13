@@ -33,10 +33,10 @@ export default function Venue() {
           transition={{ duration: 1 }}
           className="text-center mb-10 lg:mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
+          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
             The Venue
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -49,24 +49,24 @@ export default function Venue() {
           >
             <div>
               <div className="mb-4">
-                <h3 className="text-2xl lg:text-3xl font-playfair text-[var(--color-burgundy-800)] dark:text-[var(--color-champagne)] leading-tight">
+                <h3 className="text-[1.6rem] sm:text-[1.75rem] lg:text-3xl font-playfair font-bold text-[var(--color-champagne)] leading-tight whitespace-nowrap lg:whitespace-normal">
                   {weddingConfig.venue.name}
                 </h3>
-                <p className="text-lg lg:text-2xl font-playfair text-[var(--color-burgundy-800)]/70 dark:text-[var(--color-champagne)]/70 mt-1">
+                <p className="text-base lg:text-lg font-playfair text-[var(--color-champagne)] mt-2">
                   ({(weddingConfig.venue as any).nameBn})
                 </p>
               </div>
-              <p className="font-cormorant text-lg lg:text-xl text-gray-700 dark:text-gray-300 flex items-center justify-center lg:justify-start gap-2">
-                <HiOutlineLocationMarker className="text-[var(--color-gold-500)] flex-shrink-0" />
+              <p className="font-cormorant text-sm lg:text-base text-gray-500 dark:text-gray-400 flex items-center justify-center lg:justify-start gap-2 tracking-[0.1em]">
+                <HiOutlineLocationMarker className="text-[var(--color-gold-500)]/60 flex-shrink-0" />
                 <span>{weddingConfig.venue.address}</span>
               </p>
             </div>
-            
-            <div className="font-cormorant text-base lg:text-lg space-y-4">
-              <p className="text-[var(--color-champagne)] opacity-100 font-medium tracking-wide">
+
+            <div className="font-cormorant text-[0.92rem] sm:text-base lg:text-lg space-y-0.5">
+              <p className="text-[var(--color-gold-400)] font-medium tracking-wide whitespace-nowrap lg:whitespace-normal">
                 We can't wait to celebrate with you at this beautiful location.
               </p>
-              <p className="text-[var(--color-gold-400)]/90 font-medium tracking-wide">
+              <p className="text-[var(--color-gold-400)] font-medium tracking-wide whitespace-nowrap lg:whitespace-normal">
                 Ample parking is available for all guests.
               </p>
             </div>

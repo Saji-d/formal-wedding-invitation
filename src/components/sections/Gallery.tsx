@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { weddingConfig } from "@/config/wedding";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCards, Mousewheel, Keyboard } from "swiper/modules";
+import { Autoplay, EffectCards, Keyboard } from "swiper/modules";
+import { useRef, useEffect, useState } from "react";
+import type { Swiper as SwiperType } from 'swiper';
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,9 +15,20 @@ import "swiper/css/effect-cards";
 export default function Gallery() {
   // Dynamic image loading from weddingConfig which points to local /images/gallery/
   const images = weddingConfig.gallery;
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (isInView && swiperRef.current && !hasStarted) {
+      setHasStarted(true);
+      swiperRef.current.autoplay.start();
+    }
+  }, [isInView, hasStarted]);
 
   return (
-    <section className="py-40 lg:py-24 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] relative z-10 border-y border-[var(--color-gold-400)]/10 overflow-hidden w-full">
+    <section ref={sectionRef} className="py-40 lg:py-24 bg-[var(--color-champagne)] dark:bg-[var(--color-burgundy-900)] relative z-10 border-y border-[var(--color-gold-400)]/10 overflow-hidden w-full">
       <div className="max-w-4xl mx-auto flex flex-col items-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -32,7 +45,11 @@ export default function Gallery() {
 
         <div className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[350px] relative py-10 lg:py-12 lg:scale-[0.9] origin-center">
           <Swiper
-            modules={[Autoplay, EffectCards, Mousewheel, Keyboard]}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+              swiper.autoplay.stop(); // Stop immediately on init
+            }}
+            modules={[Autoplay, EffectCards, Keyboard]}
             effect={"cards"}
             grabCursor={true}
             centeredSlides={true}
@@ -42,9 +59,6 @@ export default function Gallery() {
               delay: 2000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
-            }}
-            mousewheel={{
-              forceToAxis: true,
             }}
             keyboard={{
                 enabled: true,

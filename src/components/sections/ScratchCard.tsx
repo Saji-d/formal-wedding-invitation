@@ -138,10 +138,10 @@ export default function ScratchCard() {
           transition={{ duration: 1 }}
           className="mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
+          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
             Save The Date
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-6"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto mb-6"></div>
         </motion.div>
 
         <div className="relative w-full max-w-xl mx-auto aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border-[4px] border-[var(--color-gold-400)] glass group">

@@ -44,13 +44,13 @@ export default function Countdown() {
     <section className="py-24 px-4 bg-[var(--background)]">
       <div className="max-w-4xl mx-auto text-center">
         <motion.h2 
-          className="text-4xl md:text-5xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-champagne)] mb-12"
+          className="text-4xl md:text-7xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          Counting Down to Forever
+          The Beginning of Eternity
         </motion.h2>
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-8">

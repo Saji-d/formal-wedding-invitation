@@ -72,12 +72,12 @@ export default function RSVP() {
           transition={{ duration: 1 }}
           className="mb-10 lg:mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-playfair text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-3 lg:mb-4 uppercase tracking-wider">
+          <h2 className="text-4xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
             Will You Join Our Celebration?
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-3 lg:mb-4"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto mb-6"></div>
           <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400">
-            Please let us know if you can make it
+            We would be delighted to celebrate with you.
           </p>
         </motion.div>
 

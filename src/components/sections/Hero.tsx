@@ -54,12 +54,22 @@ export default function Hero() {
         </p>
 
         <h1 
-          className="text-6xl md:text-9xl font-great-vibes text-[var(--color-ivory)] drop-shadow-2xl leading-tight mb-8 md:mb-12 lg:mb-10"
-          style={{ textShadow: "0 4px 24px rgba(0,0,0,0.7)" }}
+          className="text-6xl md:text-9xl font-great-vibes text-[var(--color-ivory)] leading-tight mb-8 md:mb-12 lg:mb-10 drop-shadow-[0_4px_12px_rgba(212,175,55,0.3)]"
+          style={{ textShadow: "0 0 20px rgba(212,175,55,0.2), 0 0 5px rgba(212,175,55,0.1)" }}
         >
-          {weddingConfig.couple.displayName1}
-          <span className="block text-4xl md:text-7xl text-[var(--color-gold-400)] my-4 md:my-6">&</span>
-          {weddingConfig.couple.displayName2}
+          <span className="relative inline-block">
+            {weddingConfig.couple.displayName1}
+            <span className="absolute inset-0 blur-[2px] opacity-30 bg-clip-text text-transparent bg-gradient-to-b from-white via-[var(--color-gold-400)] to-transparent select-none pointer-events-none">
+              {weddingConfig.couple.displayName1}
+            </span>
+          </span>
+          <span className="block text-4xl md:text-7xl text-[var(--color-gold-400)] my-4 md:my-6 drop-shadow-[0_2px_10px_rgba(212,175,55,0.2)]">&</span>
+          <span className="relative inline-block">
+            {weddingConfig.couple.displayName2}
+            <span className="absolute inset-0 blur-[2px] opacity-30 bg-clip-text text-transparent bg-gradient-to-b from-white via-[var(--color-gold-400)] to-transparent select-none pointer-events-none">
+              {weddingConfig.couple.displayName2}
+            </span>
+          </span>
         </h1>
 
         <div className="w-20 md:w-32 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-8 md:mb-12 lg:mb-10 opacity-70"></div>

@@ -73,10 +73,10 @@ export default function GuestWishes() {
           transition={{ duration: 1 }}
           className="text-center mb-16 md:mb-10"
         >
-          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-burgundy-900)] dark:text-[var(--color-ivory)] mb-4">
+          <h2 className="text-5xl md:text-6xl font-great-vibes text-[var(--color-ivory)] drop-shadow-[0_2px_10px_rgba(255,255,240,0.3)] font-medium mb-4">
             Guest Book
           </h2>
-          <div className="w-16 h-[1px] bg-[var(--color-gold-400)] mx-auto mb-6"></div>
+          <div className="w-16 h-[1px] bg-[var(--color-gold-400)]/50 mx-auto mb-6"></div>
           <p className="font-cormorant text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
             Share your blessings, prayers, and heartfelt wishes for Sajid & Dilruba ❤️
           </p>
