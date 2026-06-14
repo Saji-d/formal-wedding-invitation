@@ -73,13 +73,15 @@ export default function Home() {
             {showScrollTop && (
               <motion.button
                 initial={{ opacity: 0, scale: 0.5, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                animate={{ opacity: 0.7, scale: 1, y: 0 }}
+                whileHover={{ opacity: 1, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 exit={{ opacity: 0, scale: 0.5, y: 20 }}
                 onClick={scrollToTop}
-                className="fixed bottom-10 right-6 z-50 p-4 rounded-full glass bg-[var(--color-burgundy-900)] text-[var(--color-gold-400)] shadow-2xl hover:bg-[var(--color-burgundy-800)] transition-all duration-300 border border-[var(--color-gold-400)]/30 group"
+                className="fixed bottom-[80px] right-6 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300 group"
                 aria-label="Scroll to top"
               >
-                <HiArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                <HiArrowUp className="w-5 h-5 text-[var(--color-gold-400)] group-hover:-translate-y-0.5 transition-transform" />
               </motion.button>
             )}
           </AnimatePresence>

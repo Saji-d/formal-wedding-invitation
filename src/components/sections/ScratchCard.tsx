@@ -23,55 +23,49 @@ export default function ScratchCard() {
   }, [isRevealed]);
 
   const triggerCelebration = () => {
-    // Luxury Wedding Palette
-    const colors = ["#D4AF37", "#F7E7CE", "#800020", "#AA7C11", "#E5E4E2"];
+    const colors = ["#D4AF37", "#F7E7CE", "#800020", "#AA7C11"];
 
-    // 1. Immediate Subtle Sparkles around the revealed area
+    // 1. Initial burst - Champagne Sparkles & Gold
     confetti({
-      particleCount: 40,
-      spread: 60,
+      particleCount: 80,
+      spread: 70,
       origin: { y: 0.6 },
       colors: colors,
+      scalar: 1,
       gravity: 0.8,
-      scalar: 0.7,
-      drift: 0,
     });
 
-    // 2. 0.2s - Luxury Side Fireworks launch
+    // 2. Elegant Side Fireworks for 4 seconds
+    const end = Date.now() + 4000;
+
+    const frame = () => {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.8 },
+        colors: ["#D4AF37", "#F7E7CE"],
+        ticks: 200
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.8 },
+        colors: ["#D4AF37", "#F7E7CE"],
+        ticks: 200
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    };
+    frame();
+
+    // 3. Falling Gold & Burgundy "Confetti Rain"
     setTimeout(() => {
-      const end = Date.now() + (2 * 1000);
-
-      const frame = () => {
-        confetti({
-          particleCount: 2,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.8 },
-          colors: ["#D4AF37", "#F7E7CE", "#800020"],
-          ticks: 200
-        });
-        confetti({
-          particleCount: 2,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.8 },
-          colors: ["#D4AF37", "#F7E7CE", "#800020"],
-          ticks: 200
-        });
-
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      };
-      frame();
-    }, 200);
-
-    // 3. 0.5s - Elegant Golden Fireworks near top
-    setTimeout(() => {
-      const duration = 3 * 1000;
+      const duration = 3000;
       const animationEnd = Date.now() + duration;
-
-      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
       const interval: any = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
@@ -80,35 +74,21 @@ export default function ScratchCard() {
           return clearInterval(interval);
         }
 
-        const particleCount = 50 * (timeLeft / duration);
-        
-        // Bursting fireworks
         confetti({
-          particleCount,
-          startVelocity: 30,
-          spread: 360,
-          origin: { x: randomInRange(0.1, 0.9), y: randomInRange(0.1, 0.3) },
-          colors: ["#D4AF37", "#F7E7CE"],
+          particleCount: 3,
+          startVelocity: 0,
+          ticks: 300,
+          origin: {
+            x: Math.random(),
+            y: Math.random() * 0.9 - 0.2
+          },
+          colors: ["#D4AF37", "#800020"],
+          shapes: ['circle'],
           gravity: 0.5,
-          scalar: 1.2,
-          shapes: ['circle']
+          scalar: 0.7,
         });
-      }, 250);
+      }, 50);
     }, 500);
-
-    // 4. 1s - Festive Finale Confetti
-    setTimeout(() => {
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 },
-        colors: colors,
-        disableForReducedMotion: true,
-        scalar: 0.8,
-        gravity: 1,
-        shapes: ['circle', 'square']
-      });
-    }, 1000);
   };
 
   const initCanvas = () => {

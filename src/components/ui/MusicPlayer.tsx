@@ -64,16 +64,22 @@ export default function MusicPlayer() {
     <div className="fixed bottom-6 right-6 z-50">
       <motion.button
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        whileHover={{ opacity: 0.8 }}
+        animate={{ opacity: isMuted ? 0.4 : 0.7 }}
+        whileHover={{ opacity: 1, scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={toggleMute}
-        className="p-2.5 rounded-full glass bg-white/5 backdrop-blur-sm border border-white/10 text-[var(--color-gold-400)]/60 shadow-sm transition-all duration-300"
+        className={`
+          w-10 h-10 flex items-center justify-center rounded-full 
+          bg-black/20 backdrop-blur-md border border-white/10 
+          shadow-lg transition-all duration-300
+          ${isMuted ? 'text-white/40' : 'text-[var(--color-gold-400)]'}
+        `}
         aria-label={isMuted ? "Unmute Music" : "Mute Music"}
       >
         {isMuted ? (
-          <HiVolumeOff className="w-4 h-4" />
+          <HiVolumeOff className="w-5 h-5" />
         ) : (
-          <HiVolumeUp className="w-4 h-4" />
+          <HiVolumeUp className="w-5 h-5" />
         )}
       </motion.button>
     </div>
